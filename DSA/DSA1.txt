@@ -1,0 +1,318 @@
+Q) Write a query to display duplicate rows from student table?
+
+Student Table :
+--------------
+	sno	sname	sadd
+	---	-----	----
+	101     raja    hyd
+	102     ravi    delhi
+	103     ramana  vizag
+	101     Alan    Florida 	
+
+output:
+	sno	sname	sadd
+	----	-----	-----
+	101	raja	hyd
+	101	Alan 	Florida 
+
+ex:
+	select * from student 
+	where sno IN (
+			select sno from student 
+			group by sno having count(*)>1	
+		);
+
+
+
+Data Structures 
+===============
+
+Data
+====
+Data is a raw facts, figures, symbols and information that can be analysed and used for various purpose.
+
+Data can be in different forms like Text, Audio, Video, Table,List,Graphs and etc.
+
+Today IT industry is based on data.
+ex:
+	Programming languages are used to process the data 
+	Databases are used to store the data
+	AI is used to analyze and generate the data
+
+
+Data Structures 
+===============
+Data structures are specialized format for organizing , managing and storing the data in a computer so that we can access and modify efficiently.
+
+Data structures describes how can we store the data efficiently and save some memory.
+
+
+We have two types of data structures.
+
+Diagram: DSA1.1
+
+Primitive data structures are used to hold single value.
+
+Primitive data structures are not designed to hold multiple values.
+
+Non-Primitive data structure is used to bulk of values.
+
+
+There are four steps to learn data structures.
+
+1) Learn any one programming language.
+   ex:
+	C, C++, Java and Python
+
+
+2) Learn Complexities.
+   ex:
+	Time complexity 
+	Space complexity 
+
+
+3) Learning Data Structures and Alogirthms.
+
+	Data Structure		Alogrithm 
+	-------------		---------
+	String 			Searching 
+	Array 			Sorting 
+	LinkedList 		Divide and Conquer 
+	Stack 			Hashing 
+	Queue 			Recursion 
+	Trees			Dynamic programming 
+	Graphs 			Tree and graph traversals 
+
+4) Practice all programs in DSA platform.
+   ex:
+	HackerRank 
+	LeetCode 
+	CodeChef 
+	and etc.	
+
+
+Pseudo Code 
+===========
+Pseudo code is a simplified , human-readable description of an algorithm that uses to outline the logic of a program or algorithm.
+
+It is not a actual programming language but helps a programmer to understand and design algorithms before coding them in a particular language.
+
+Q) Write a pseudo code to perform sum of two numbers?
+
+ex:
+--
+	BEGIN 
+
+		DECLARE A,B,C
+
+		PRINT "Enter First Number"
+		INPUT A
+
+		PRINT "Enter Second Number"
+		INPUT B 
+
+		C=A+B;
+
+		print C
+
+	END
+	 	
+Diagram: DSA1.2
+
+Time Complexity 
+===============
+Time complexity measures execution time of an algorithm based on inputs.
+
+It is represented as Big O notation and it describes upper bond of growth rate of time.
+
+ex:
+	O(1)
+
+
+Linear Search 
+=============
+In linear search, we visit each element of an array eventually untill target element is found.
+
+Linear search works for sorted and unsorted array.
+
+In realtime we will use linear search to find out an object which is present in a collections.
+ex:
+	List<String>  list = List.of("apple","banana","orange");
+	System.out.println(list.contains("banana")); // true 
+
+
+Time Complexity 
+--------------
+	In Best Case, O(1) is a time complexity 
+	ex:
+		arr = 6 9 2 4 1 7 3 
+		target = 6
+
+	In Average Case, O(n) is a time complexity 
+	ex:
+		arr = 6 9 2 4 1 7 3 
+		target = 4
+	
+	In Worst Case, O(n) is a time complexity 
+	ex:
+		arr = 6 9 2 4 1 7 3 
+		target = 3
+		or
+		arr = 6 9 2 4 1 7 3 
+		target = 10
+
+Diagram: DSA1.3
+
+
+
+Programs
+========
+Q) Write a java program to find out target element from given positive unsorted array?
+
+Input:
+	arr = 6 9 2 4 1 7 3 
+	target = 4
+
+Output:
+	3
+
+
+class LinearSearch 
+{
+	public static void main(String[] args) 
+	{
+		int[] arr ={6,9,2,4,1,7,3}; 
+		int target = 4;
+		int index = findIndex(arr,target);
+		if(index!=-1)
+			System.out.println("Element Found In "+index+" Index");
+		else
+			System.out.println("Element Not Found");
+	}
+	public static int findIndex(int[] arr,int target)
+	{
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i]==target)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+}
+
+
+Q) Write a java program to find out key element present in String array?
+
+Input:
+	arr = {"apple","banana","orange"}
+	key = "banana"
+
+Output:
+	true  	
+
+ex:
+
+class LinearSearch 
+{
+	public static void main(String[] args) 
+	{
+		String[] arr = {"apple","banana","orange"};
+		String key = "banana";
+		if(findKey(arr,key))
+			System.out.println("true");
+		else
+			System.out.println("false");
+	}
+	public static boolean findKey(String[] arr,String key)
+	{
+		for(String s : arr)
+		{
+			if(s.equals("banana"))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+}
+
+Q) Write a java program to find out number of occurance of a given target element?
+
+input:
+	arr = 6 7 2 7 1 7 5 6 7
+	target = 7
+output:
+	4  
+
+
+class LinearSearch 
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {6,7,2,7,1,7,5,6,7};
+		int target = 7;
+		int cnt = findTarget(arr,target);
+		System.out.println(cnt);
+	}
+	public static int findTarget(int[] arr,int target)
+	{
+		int cnt = 0;
+		for(int i : arr)
+		{
+			if(i==target)
+			{
+				cnt++;
+			}
+		}
+		return cnt;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

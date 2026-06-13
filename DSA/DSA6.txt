@@ -1,0 +1,382 @@
+Stack 
+======
+It is a linear data structure which follows List In First Out (LIFO) order.
+
+It means element which is inserted at last is the element to remove first.
+
+ex:
+	Chair Arrangements 
+	Plat arrangements 
+
+Methods
+-------
+1) push(E)
+----------
+	It is used to push the element to stack.
+
+2) pop()
+-------
+	It is used to return and remove the element from stack.
+
+3) peek()
+---------
+	It used to return toppest element from stack.
+
+4) isEmpty()
+-----------
+	It is used to check stack is empty or not.
+
+5) search(E) 
+----------
+	It returns offset value if element is found otherwise it will return -1.
+
+ex:
+---
+class MyStack 
+{
+	int size;
+	int[] stack;
+	int top;
+
+	public MyStack(int size)
+	{
+		this.size = size;	
+		stack = new int[size];
+		top = -1;
+	}
+	public void push(int data)
+	{
+		if(top<size-1)
+		{
+			top++;
+			stack[top]=data;
+		}
+		else
+		{
+			System.out.println("Stack is Full");
+		}
+	}
+	public void printData()
+	{
+		for(int i=0;i<=top;i++)
+		{
+			System.out.print(stack[i]+" ");
+		}
+		//new line 
+		System.out.println();
+	}
+	public boolean isEmpty()
+	{
+		return top == -1;
+	}
+	
+	public int peek()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Stack is Empty");
+			return -1;
+		}
+		else
+		{
+			return stack[top];
+		}
+	}
+	
+	public int pop()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Stack is Empty");
+			return -1;
+		}
+		else
+		{
+			return stack[top--];
+		}
+	}
+	public int search(int data)
+	{
+		for(int i=0;i<=top;i++)
+		{
+			if(stack[i] == data)
+			{
+				return top-1;
+			}
+		}
+		return -1;
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		MyStack ms = new MyStack(5);
+		ms.push(5);
+		ms.push(9);
+		ms.push(6);
+		ms.push(2);
+		ms.push(8);
+		//ms.push(10);
+		
+		ms.printData();
+		
+		System.out.println(ms.isEmpty());
+		
+		System.out.println(ms.peek());
+		
+		System.out.println(ms.pop());
+		
+		ms.printData();
+		
+		System.out.println(ms.search(6));
+	}
+}
+
+Diagram: DSA6.1
+
+Queue
+======
+It is linear data structure which follows First In First Out (FIFO) order.
+
+It means element which is insert first is the element to be remove first.
+
+ex:
+	Bank Queue 
+	Ticket Queue 
+
+Methods
+-------
+
+1) enqueue 
+----------
+	It is used to insert element in a queue using rare.
+
+2) dequeue
+----------
+	It is used to delete element from a queue using front.
+
+3) isEmpty() 
+-------------
+	It is used to check queue is empty or not.
+
+4) peek() 
+---------
+	It is used to read toppest element from front.
+
+ex:
+---
+class MyQueue
+{
+	int rare;
+	int front;
+	int maxSize;
+	int[] arr;
+	int size;
+	public MyQueue(int maxSize)
+	{
+		this.maxSize = maxSize;
+		this.rare = -1;
+		this.front = 0;
+		arr = new int[maxSize];
+		size = 0;
+	}
+	public void enqueue(int data)
+	{
+		if(size<maxSize)
+		{
+			rare++;
+			arr[rare] = data;
+			size++;
+		}
+		else
+		{
+			System.out.println("Queue is overflow");
+		}
+	}
+	public void printData()
+	{
+		for(int i=front;i<=rare;i++)
+		{
+			System.out.print(arr[i]+" ");
+		}
+		//new line
+		System.out.println();
+	}
+	
+	public boolean isEmpty()
+	{
+		return size == 0;
+	}
+	
+	public int peek()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Queue is Empty");
+			return -1;
+		}
+		else
+		{
+			return arr[front];
+		}
+	}
+	
+	public int dequeue()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Queue is Empty");
+			return -1;
+		}
+		else
+		{
+			size--;
+			return arr[front++];
+		}
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		MyQueue mq = new MyQueue(5);
+		mq.enqueue(9);
+		mq.enqueue(2);
+		mq.enqueue(7);
+		mq.enqueue(9);
+		mq.enqueue(1);
+		//mq.enqueue(10);
+		
+		mq.printData();
+		
+		System.out.println(mq.isEmpty());
+		
+		System.out.println(mq.peek());
+		
+		System.out.println(mq.dequeue());
+		
+		mq.printData();
+	}
+}
+
+Diagram: DSA6.2
+
+Interview Questions 
+===================
+
+Q) Write a java program to concatinate two maps?
+
+Input:
+	{5=2,2=6,9=3}
+	{4=2,5=3,9=1}
+Output;
+	{5=5,2=6,4=2,9=4}
+
+ex:
+---
+import java.util.*;
+class Test
+{
+	public static void main(String[] args)
+	{
+		Map<Integer,Integer> map1 = new HashMap<>();
+		map1.put(5,2);
+		map1.put(2,6);
+		map1.put(9,3);
+		
+		Map<Integer,Integer> map2 = new HashMap<>();
+		map2.put(4,2);
+		map2.put(5,3);
+		map2.put(9,1);
+		
+		Map<Integer,Integer> result = new HashMap<>(map1);
+		
+		for(Map.Entry<Integer,Integer> entry : map2.entrySet())
+		{
+		result.merge(entry.getKey(),entry.getValue(), Integer::sum);
+		}
+		
+		System.out.println(result);
+	}
+}
+
+
+Q) Write a java program to perform sum of two reverse number and display in reverse order?
+
+input:
+	3
+
+	17  1   (71+1)
+
+	88  12  (88+21)
+
+	4   16  (4+61)
+
+output:
+	27
+	901
+	56	
+
+import java.util.Scanner;
+class Test
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();//3
+		for(int i=1;i<=n;i++)
+		{
+			int a = sc.nextInt();//17
+			int b = sc.nextInt();//1
+			a = reverse(a); // 71
+			b = reverse(b); // 1 
+			int c = a + b;
+			c = reverse(c);
+			System.out.println(c);
+		}
+	}
+	public static int reverse(int n)
+	{
+		int rem,rev=0;
+		while(n>0)
+		{
+			rem = n%10;
+			rev = rev * 10 + rem;
+			n = n/10;
+		}
+		return rev;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

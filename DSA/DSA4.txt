@@ -1,0 +1,273 @@
+Insertion Sort
+==============
+It is a sorting algorithm which is used to set unordered element to it's place in each iteration.
+
+Time Complexity:
+---------------
+1) Best case 	: O(n) - Linear Time    - When array elements are in sorted order 
+
+2) Average case : O(n²) - Quadratic Time - When array elements are in unsorted order
+
+3) Worst case   : O(n²) - Quadratic Time - When array elements are in reverse order
+
+Diagram: DSA4.1
+
+
+Q) Write a java program to sort the array using insertion sort?
+
+Input:
+	8 2 9 1 6 5 7
+
+Output:
+	1 2 5 6 7 8 9 
+
+
+class InsertionSort
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {8,2,9,1,6,5,7};
+		
+		System.out.println("Before Sorting :");
+		printArray(arr);
+		
+		insertionSort(arr);
+		
+		System.out.println("After Sorting :");
+		printArray(arr);
+	}
+	
+	public static void insertionSort(int[] arr)
+	{
+		for(int i=1;i<arr.length;i++)
+		{
+			int key = arr[i];
+			int j = i - 1;
+			while(j>=0 && arr[j]>key)
+			{
+				arr[j+1] = arr[j];
+				j--;
+			}
+			arr[j+1]=key;
+		}
+	}
+	
+	public static void printArray(int[] arr)
+	{
+		for(int i : arr)
+		{
+			System.out.print(i+" ");
+		}
+		System.out.println();
+	}
+}
+
+
+Divide and Conquer 
+===================
+It is a programming paradigm used in Data Structures and Algorithms.
+
+It involves in dividing complex problem into sub problems , handle recursively (independently), and merge them to get final result.
+
+We have following algorithms which uses divide and conquer statergy.
+ex:
+	Quick Sort 
+	Merge Sort 
+
+
+Quick Sort 
+==========
+It is a highly efficient, comparison-based sorting algorithm that uses a divide-and-conquer strategy to sort array around the pivotal element.
+
+Time Complexity: 
+----------------
+Best Case 	: O(n log n) (Linearithmic Time) - Occurs when the pivot splits the array into
+						   two nearly equal halves each time.	 
+
+Average Case	: O(n log n) (Linearithmic Time ) - Happens for random input or when a good
+						    pivot selection strategy is used.
+
+Worst Case 	: O(n²) (Quadratic Time)	 - Occurs when the pivot is always the smallest
+						 or largest element (e.g., already sorted array
+						 with poor pivot choice).
+
+Example
+-------
+input:
+	20 4 1 12 15 6 8
+
+output:
+	1 4 6 8 12 15 20
+
+
+class QuickSort
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {20,4,1,12,15,6,8};
+		
+		System.out.println("Before Sorting :");
+		printArray(arr);
+		
+		quickSort(arr,0,arr.length-1);
+		
+		System.out.println("After Sorting :");
+		printArray(arr);
+	}
+	
+	public static void quickSort(int[] arr,int low,int high)
+	{
+		if(low<high)
+		{
+			int pi = partition(arr,low,high);
+			quickSort(arr,low,pi-1);
+			quickSort(arr,pi+1,high);
+		}
+	}
+	public static int partition(int[] arr,int low,int high)
+	{
+		int pivotal = arr[high];
+		int i = low - 1;
+		for(int j=low;j<high;j++)
+		{
+			if(arr[j]<pivotal)
+			{
+				i++;
+				swap(arr,i,j);
+			}
+		}
+		swap(arr,i+1,high);
+		return i+1;
+	}
+	public static void swap(int[] arr,int i,int j)
+	{
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+	
+	public static void printArray(int[] arr)
+	{
+		for(int i : arr)
+		{
+			System.out.print(i+" ");
+		}
+		System.out.println();
+	}
+}
+
+Merge Sort
+==========
+Merge sort is a highly efficient, comparison-based sorting algorithm that uses the Divide and Conquer strategy to divide our array into sub arrays which each sub array contains single element and later merge them in a sorted order.
+
+Time Complexity 
+---------------
+
+1) Best Case	: O(n log n) - Linearithmic Time 
+2) Average Case : O(n log n) - Linearithmic Time 
+3) Worst Case   : O(n log n) - Linearithmic Time 
+
+
+Diagram : DSA4.3
+
+
+Example
+-------
+Input:
+	5 8 9 1 6 7 
+
+Output:
+	1 5 6 7 8 9 
+
+class MergeSort
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {5,8,9,1,6,7};
+		
+		System.out.println("Before Sorting :");
+		printArray(arr);
+		
+		divide(arr,0,arr.length-1);
+		
+		System.out.println("After Sorting :");
+		printArray(arr);
+	}
+	public static void divide(int[] arr,int left,int right)
+	{
+		if(left<right)
+		{
+			int mid = (left+right)/2;
+			divide(arr,left,mid);
+			divide(arr,mid+1,right);
+			conquer(arr,left,mid,right);
+
+		}
+	}
+	public static void conquer(int[] arr,int left, int mid,int right)
+	{
+		//merge 
+		int n1= mid-left+1; // 2-0+1
+		int n2= right-mid;  // 5-2
+		
+		int[] L=new int[n1];
+		int[] R=new int[n2];
+		
+		for(int i=0;i<n1;i++)
+			L[i] = arr[left+i]; // 0+0  , 0+1 , 0+2 
+		for(int j=0;j<n2;j++)
+			R[j] = arr[mid+1+j]; //3, 4 ,5 
+		
+		//sorting 
+		int i=0,j=0,k=left;
+		while(i<n1 && j<n2)
+		{
+			if(L[i] <= R[j])
+			{
+				arr[k++] = L[i++]; 
+			}
+			else
+			{
+				arr[k++] = R[j++];
+			}
+		}
+		//remaining elements
+		while(i<n1)
+		{
+			arr[k++] = L[i++];
+		}
+		while(j<n2)
+		{
+			arr[k++] = R[j++];
+		}
+	}
+
+	
+	public static void printArray(int[] arr)
+	{
+		for(int i : arr)
+		{
+			System.out.print(i+" ");
+		}
+		System.out.println();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

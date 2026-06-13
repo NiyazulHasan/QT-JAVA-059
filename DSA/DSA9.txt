@@ -1,0 +1,509 @@
+Binary Tree 
+=========== 
+It is a non-linear data structure in which each node has atmost two child nodes commonly refers as left child and right child.
+
+Diagram: DSA9.1
+
+
+Binary Search Tree 
+==================
+In binary search tree left node must be less then parent and right node must be greater then parent.
+
+Time Complexity : 
+			O(n log n) - Linearithmetic Time 
+
+Example
+-------
+	8 7 12 15 2 5 
+
+Diagram: DSA9.2	
+
+
+Inserting elements in Binary search Tree
+========================================
+class BST
+{
+	class Node 
+	{
+		int data;
+		Node left;
+		Node right;
+		Node(int data)
+		{
+			this.data = data;
+		}
+	}
+	Node root;
+	public void insert(int data)
+	{
+		root = insertRec(root,data);
+	}
+	public Node insertRec(Node root,int data)
+	{
+		if(root==null)
+			root = new Node(data);
+		else if(data < root.data)
+			root.left = insertRec(root.left,data);
+		else if(data > root.data)
+			root.right = insertRec(root.right,data);
+		
+		return root;
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		BST bst = new BST();
+		bst.insert(8);
+		bst.insert(7);
+		bst.insert(12);
+		bst.insert(15);
+		bst.insert(2);
+		bst.insert(5);
+	}
+}
+
+Reading the elements from Binary Search Tree 
+============================================
+We have three types of Tree traversal's.
+
+1) In order traversal : left , parent , right 
+
+2) Pre order traversal : parent, left, right 
+
+3) Post order traversal : left, right , parent 
+
+
+1) In order traversal
+----------------------
+class BST
+{
+	class Node 
+	{
+		int data;
+		Node left;
+		Node right;
+		Node(int data)
+		{
+			this.data = data;
+		}
+	}
+	Node root;
+	public void insert(int data)
+	{
+		root = insertRec(root,data);
+	}
+	public Node insertRec(Node root,int data)
+	{
+		if(root==null)
+			root = new Node(data);
+		else if(data < root.data)
+			root.left = insertRec(root.left,data);
+		else if(data > root.data)
+			root.right = insertRec(root.right,data);
+		
+		return root;
+	}
+	
+	public void inOrder()
+	{
+		inOrderRec(root);	
+	}
+	public void inOrderRec(Node root)
+	{
+		if(root!=null)
+		{
+			inOrderRec(root.left);
+			System.out.print(root.data+" ");
+			inOrderRec(root.right);
+		}
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		BST bst = new BST();
+		bst.insert(8);
+		bst.insert(7);
+		bst.insert(12);
+		bst.insert(15);
+		bst.insert(2);
+		bst.insert(5);
+		
+		bst.inOrder();
+	}
+}
+
+2) Pre order traversal
+----------------------
+class BST
+{
+	class Node 
+	{
+		int data;
+		Node left;
+		Node right;
+		Node(int data)
+		{
+			this.data = data;
+		}
+	}
+	Node root;
+	public void insert(int data)
+	{
+		root = insertRec(root,data);
+	}
+	public Node insertRec(Node root,int data)
+	{
+		if(root==null)
+			root = new Node(data);
+		else if(data < root.data)
+			root.left = insertRec(root.left,data);
+		else if(data > root.data)
+			root.right = insertRec(root.right,data);
+		
+		return root;
+	}
+	
+	public void preOrder()
+	{
+		preOrderRec(root);	
+	}
+	public void preOrderRec(Node root)
+	{
+		if(root!=null)
+		{
+			System.out.print(root.data+" ");
+			preOrderRec(root.left);
+			preOrderRec(root.right);
+		}
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		BST bst = new BST();
+		bst.insert(8);
+		bst.insert(7);
+		bst.insert(12);
+		bst.insert(15);
+		bst.insert(2);
+		bst.insert(5);
+		
+		bst.preOrder();
+	}
+}
+
+3) Post order traversal
+------------------------
+class BST
+{
+	class Node 
+	{
+		int data;
+		Node left;
+		Node right;
+		Node(int data)
+		{
+			this.data = data;
+		}
+	}
+	Node root;
+	public void insert(int data)
+	{
+		root = insertRec(root,data);
+	}
+	public Node insertRec(Node root,int data)
+	{
+		if(root==null)
+			root = new Node(data);
+		else if(data < root.data)
+			root.left = insertRec(root.left,data);
+		else if(data > root.data)
+			root.right = insertRec(root.right,data);
+		
+		return root;
+	}
+	
+	public void postOrder()
+	{
+		postOrderRec(root);	
+	}
+	public void postOrderRec(Node root)
+	{
+		if(root!=null)
+		{
+			postOrderRec(root.left);
+			postOrderRec(root.right);
+			System.out.print(root.data+" ");
+		}
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		BST bst = new BST();
+		bst.insert(8);
+		bst.insert(7);
+		bst.insert(12);
+		bst.insert(15);
+		bst.insert(2);
+		bst.insert(5);
+		
+		bst.postOrder();
+	}
+}
+
+
+Search Element in Binary Search tree 
+=====================================
+class BST
+{
+	class Node 
+	{
+		int data;
+		Node left;
+		Node right;
+		Node(int data)
+		{
+			this.data = data;
+		}
+	}
+	Node root;
+	public void insert(int data)
+	{
+		root = insertRec(root,data);
+	}
+	public Node insertRec(Node root,int data)
+	{
+		if(root==null)
+			root = new Node(data);
+		else if(data < root.data)
+			root.left = insertRec(root.left,data);
+		else if(data > root.data)
+			root.right = insertRec(root.right,data);
+		
+		return root;
+	}
+	
+	public void postOrder()
+	{
+		postOrderRec(root);	
+	}
+	public void postOrderRec(Node root)
+	{
+		if(root!=null)
+		{
+			postOrderRec(root.left);
+			postOrderRec(root.right);
+			System.out.print(root.data+" ");
+		}
+	}
+	public boolean search(int key)
+	{
+		return searchRec(root,key);
+	}
+	public boolean searchRec(Node root,int key)
+	{
+		if(root == null)
+			return false;
+		
+		if(key == root.data)
+			return true;
+		else if(key < root.data)
+			return searchRec(root.left,key);
+		else
+			return searchRec(root.right,key);
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		BST bst = new BST();
+		bst.insert(8);
+		bst.insert(7);
+		bst.insert(12);
+		bst.insert(15);
+		bst.insert(2);
+		bst.insert(5);
+		
+		bst.postOrder();
+		
+		System.out.println(bst.search(7));
+	}
+}
+
+Deleting element from Binary Search Tree 
+========================================
+Diagram: DSA9.3
+
+class BST
+{
+	class Node 
+	{
+		int data;
+		Node left;
+		Node right;
+		Node(int data)
+		{
+			this.data = data;
+		}
+	}
+	Node root;
+	public void insert(int data)
+	{
+		root = insertRec(root,data);
+	}
+	public Node insertRec(Node root,int data)
+	{
+		if(root==null)
+			root = new Node(data);
+		else if(data < root.data)
+			root.left = insertRec(root.left,data);
+		else if(data > root.data)
+			root.right = insertRec(root.right,data);
+		
+		return root;
+	}
+	
+	public void postOrder()
+	{
+		postOrderRec(root);	
+	}
+	public void postOrderRec(Node root)
+	{
+		if(root!=null)
+		{
+			postOrderRec(root.left);
+			postOrderRec(root.right);
+			System.out.print(root.data+" ");
+		}
+	}
+	public boolean search(int key)
+	{
+		return searchRec(root,key);
+	}
+	public boolean searchRec(Node root,int key)
+	{
+		if(root == null)
+			return false;
+		
+		if(key == root.data)
+			return true;
+		else if(key < root.data)
+			return searchRec(root.left,key);
+		else
+			return searchRec(root.right,key);
+	}
+	public void delete(int key)
+	{
+		root = deleteRec(root,key);
+	}
+	public Node deleteRec(Node root,int key)
+	{
+		if(root == null)
+			return null;
+		
+		if( key < root.data)
+			root.left = deleteRec(root.left,key);
+		else if(key > root.data)
+			root.right = deleteRec(root.right,key);
+		else
+		{
+			if(root.left!=null && root.right!=null)
+			{
+				int value = findMax(root.left,Integer.MIN_VALUE);	
+				root.data = value;
+				root.left = deleteRec(root.left,value);
+				return root;
+			}
+			else if(root.right!=null)
+				return root.right;
+			else if(root.left!=null)
+				return root.left;
+			else
+				return null;
+		}
+		return root;
+	}
+	public int findMax(Node root, int max)
+	{
+		if(root!=null)
+		{
+			max = Math.max(root.data,max);
+			root = root.right;
+		}
+		return max;
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		BST bst = new BST();
+		bst.insert(8);
+		bst.insert(7);
+		bst.insert(12);
+		bst.insert(15);
+		bst.insert(2);
+		bst.insert(5);
+		
+		bst.postOrder();
+		
+		System.out.println("\n"+bst.search(7));
+		
+		bst.delete(7);
+		
+		bst.postOrder();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

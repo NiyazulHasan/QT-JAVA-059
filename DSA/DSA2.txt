@@ -1,0 +1,294 @@
+Binary Search 
+============
+Binary search is a most efficient algorithm which is used to find out position of target value in sorted array or list.
+
+It operates on dividing recursively our internal into halfs.
+
+Binary search works only for sorted array.
+
+Time Complexity 
+---------------
+	Best Case	: 	O(1) - constant time 
+	Average Case 	:	O(log n) - Logarithmic time 
+	Worst Case	:	O(log n) - Logarithmic time 
+
+Diagram: DSA2.1
+
+
+Q) Write a java program find out target element using binary search?
+
+Input:
+	arr = 1 2 3 4 5 6 7 8 9 10
+	target = 8 
+Output:
+	7
+
+ex:
+----
+class BinarySearch
+{
+	public static void main(String[] args) 
+	{
+		int[] arr ={1,2,3,4,5,6,7,8,9,10};
+		int target = 8; 
+		int index = binarySearchIndex(arr,target);
+		if(index!=-1)
+			System.out.println("Element Found "+index+" index");
+		else
+			System.out.println("Element Not Found");
+	}
+	public static int binarySearchIndex(int[] arr,int target)
+	{
+		int start=0;
+		int end = arr.length-1;
+		while(start<=end)
+		{
+			int mid = (start+end)/2;
+			if(arr[mid]==target)
+			{
+				return mid;
+			}
+			else if(arr[mid]>target)
+			{
+				end = mid-1;
+			}
+			else
+			{
+				start = mid+1;	
+			}
+		}
+		return -1;
+	}
+}
+Diagram: DSA2.2
+
+
+Dynamic Programming 
+===================
+It is a programming technique which is used to divide complex problem into sub problems.
+
+It is a method to break down complex problem into simpler sub-problems.
+
+ex:
+	Recursion 
+	LCS (Longest Common Subsequence)
+
+
+
+
+Q) Write a java program to find out target element using recursion?
+
+Input:
+	arr = 1 2 3 4 5 6 7 8 9 10
+	target = 8
+Output:
+	7
+ex:
+---
+class BinarySearch
+{
+	public static void main(String[] args) 
+	{
+		int[] arr ={1,2,3,4,5,6,7,8,9,10};
+		int target = 8; 
+		int index = binarySearchIndex(arr,target,0,arr.length-1);
+		if(index!=-1)
+			System.out.println("Element Found "+index+" index");
+		else
+			System.out.println("Element Not Found");
+	}
+	public static int binarySearchIndex(int[] arr,int target,int start,int end)
+	{
+		while(start<=end)
+		{
+			int mid = (start+end)/2;
+			if(arr[mid]==target)
+			{
+				return mid;
+			}
+			else if(arr[mid]>target)
+			{
+				//end = mid-1;
+				return binarySearchIndex(arr,target,start,mid-1);
+			}
+			else
+			{
+				//start = mid+1;	
+				return binarySearchIndex(arr,target,mid+1,end);
+			}
+		}
+		return -1;
+	}
+}
+
+
+Q) Write a java program to find out factorial of a given number using recursion?
+
+Input:
+	5
+output:
+	120 
+
+ex:
+---
+import java.util.Scanner;
+class FactorialExample
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();
+		
+		System.out.println(factorial(n));
+	}
+	public static int factorial(int n)
+	{
+		if(n<0)
+			return -1;
+		if(n==0)
+			return 1;
+		
+		return n*factorial(n-1);
+	}
+}
+
+Q) Write a java program to find out fibonaccie series of a given number using recursion?
+
+input:
+	6
+output:
+	0 1 1 2 3 5  
+
+ex:
+--
+import java.util.Scanner;
+class FibonaccieSeries
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();//6
+		
+		for(int i=0;i<n;i++)
+		{
+			System.out.print(fibonaccie(i)+" ");
+		}
+	}
+	public static int fibonaccie(int n)
+	{
+		if(n<=1)
+		{
+			return n;
+		}
+		return fibonaccie(n-1)+fibonaccie(n-2);
+	}
+}
+
+
+Q) Write a java program to find out power of a number using recursion?
+
+
+class PowerOfNumber
+{
+	public static void main(String[] args) 
+	{
+		int base = 5, power = 3;
+		System.out.println(findPower(base,power));
+	}
+	public static int findPower(int base,int power)
+	{
+		if(power==0)
+		{
+			return 1;
+		}
+		return base * findPower(base,power-1);
+	}
+}
+
+Q) Write a java program to display reverse of a string using recursion?
+
+Input:
+	hello 
+Output:
+	olleh 
+
+
+class ReverseString
+{
+	public static void main(String[] args) 
+	{
+		String str="hello";
+		String rev = "";
+		System.out.println(reverse(str,rev,str.length()-1));
+	}
+	public static String reverse(String str,String rev,int i)
+	{
+		if(i<0)
+		{
+			return rev;
+		}
+		
+		return reverse(str,rev+=str.charAt(i),i-1);
+	}
+}
+
+
+Q) Write a java program to find out Tower of Hanoi program ?
+
+Output:
+	A -> C 
+	A -> B 
+	C -> B
+	A -> C 
+	B -> A 
+	B -> C 
+	A -> C 
+
+
+class TowerOfHanoi
+{
+	public static void main(String[] args) 
+	{
+		towerOfHanoi(3,"A","B","C");
+	}
+	public static void towerOfHanoi(int n,String src,String aux,String des)
+	{
+		if(n==1)
+		{
+			System.out.println(src+" --> "+des);
+			return;
+		}
+		towerOfHanoi(n-1,src,des,aux);
+		towerOfHanoi(1,src,aux,des);
+		towerOfHanoi(n-1,aux,src,des);
+	}
+}
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

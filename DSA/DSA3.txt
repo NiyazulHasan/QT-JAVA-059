@@ -1,0 +1,271 @@
+LCS (Longest Common Subsequence)
+================================
+
+Q) Write a java program to find out LCS in a given string?
+
+input:
+	ABCAB 
+	AECB 
+output:
+	3
+
+Diagram: DSA3.1
+
+class LCS
+{
+	public static void main(String[] args) 
+	{
+		String str1 = "ABCAB"; 
+		String str2 = "AECB"; 
+		System.out.println(longestCommonSubsequence(str1,str2));
+	}	
+	public static int longestCommonSubsequence(String s1,String s2)
+	{
+		return resolve(s1,s2,0,0);
+	}
+	public static int resolve(String s1,String s2,int i,int j)
+	{
+		if(i==s1.length() || j==s2.length())
+		{
+			return 0;
+		}
+		int ans=0;
+		
+		if(s1.charAt(i) == s2.charAt(j))
+		{
+			ans = 1 + resolve(s1,s2,i+1,j+1);
+		}
+		else
+		{
+			ans = Math.max(resolve(s1,s2,i+1,j),resolve(s1,s2,i,j+1));
+		}
+		return ans;
+	}
+}
+
+
+Q) Write a java program to find out LCS in a given string?
+
+input:
+	ABCAB 
+	AECB 
+output:
+	ACB 
+
+class LCS
+{
+	public static void main(String[] args) 
+	{
+		String str1 = "ABCAB"; 
+		String str2 = "AECB"; 
+		System.out.println(longestCommonSubsequence(str1,str2));
+	}	
+	public static String longestCommonSubsequence(String s1,String s2)
+	{
+		return resolve(s1,s2,0,0);
+	}
+	public static String resolve(String s1,String s2,int i,int j)
+	{
+		if(i==s1.length() || j==s2.length())
+		{
+			return "";
+		}
+		
+		String ans=null;
+		
+		if(s1.charAt(i) == s2.charAt(j))
+		{
+			ans = s1.charAt(i) + resolve(s1,s2,i+1,j+1);
+		}
+		else
+		{
+			String option1 = resolve(s1,s2,i+1,j);
+			String option2 = resolve(s1,s2,i,j+1);
+		ans = (option1.length() > option2.length())?option1:option2;
+		}
+		return ans;
+	}
+}
+
+
+Bubble Sort 
+===========
+Bubble sort is a sorting algorithm which compares two adjacent elements and place them in a intend order.
+
+Time Complexity:
+----------------
+1) Best Case 	: O(n) - Linear Time  - When array elements are in sorted order
+
+2) Average Case : O(n²)- Quadratic Time - When array elements are in unsorted order
+
+3) Worst Case 	: O(n²)- Quadratic Time - When array elements are in reverse order
+
+Diagram: DSA3.2
+
+Note:
+-----
+In Bubble sort we perform swapping logic inside inner loop.
+
+
+
+Q) Write a java program to sort the array using Bubble sort?
+
+input:
+	6 2 1 7 5 9 
+
+output:
+	1 2 5 6 7 9 
+
+
+class BubbleSort
+{
+	public static void main(String[] args) 
+	{
+		int[] arr={6,2,1,7,5,9};
+		
+		System.out.println("Before Sorting:");
+		printArray(arr);	
+		
+		//sorting logic 
+		bubbleSort(arr);
+		
+		System.out.println("After Sorting");
+		printArray(arr);
+	}
+	public static void bubbleSort(int[] arr)
+	{
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=0;j<arr.length-1;j++)
+			{
+				if(arr[j]>arr[j+1])
+				{
+					//swapping 
+					int temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1]=temp;
+				}
+			}
+		}
+	}
+	
+	public static void printArray(int[] arr)
+	{
+		for(int i : arr)
+		{
+			System.out.print(i+" ");
+		}
+		//new line 
+		System.out.println();
+	}
+}
+
+
+Selection Sort 
+===============
+Selection sort is a sorting algorithm which is used to find out smallest value and placed it front of the array.
+
+Time Complexity:
+----------------
+1) Best Case	: O(n²) - Quadratic Time  - When array elements are in sorted order 
+
+2) Average Case : O(n²) - Quadratic Time  - When array elements are in unsorted order
+
+3) Worst Case  	: O(n²) - Quadratic Time  - When array elements are in reverse order
+
+Diagram: DSA3.3
+
+Note:
+----
+In selection sort we need to write swapping logic inside outer loop.
+
+
+
+Q) Write a java program to sort the array using selection sort?
+
+input:
+	6 2 1 7 5 9 
+
+output:
+	1 2 5 6 7 9 
+
+
+class SelectionSort
+{
+	public static void main(String[] args) 
+	{
+		int[] arr={6,2,1,7,5,9};
+		
+		System.out.println("Before Sorting:");
+		printArray(arr);	
+		
+		//sorting logic 
+		selectionSort(arr);
+		
+		System.out.println("After Sorting");
+		printArray(arr);
+	}
+	public static void selectionSort(int[] arr)
+	{
+		for(int i=0;i<arr.length-1;i++)
+		{
+			int minIndex = i;
+			
+			for(int j=i+1;j<arr.length;j++)
+			{
+				if(arr[j]<arr[minIndex])
+				{
+					minIndex = j;
+				}
+			}
+			
+			//swapping 
+			int temp = arr[minIndex];
+			arr[minIndex] = arr[i];
+			arr[i] = temp;
+		}
+	}
+	
+	public static void printArray(int[] arr)
+	{
+		for(int i : arr)
+		{
+			System.out.print(i+" ");
+		}
+		//new line 
+		System.out.println();
+	}
+}
+
+Note:
+----
+	Bubble Sort → good when data is almost sorted
+	Selection Sort → good when swaps must be minimized
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
