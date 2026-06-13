@@ -1,0 +1,115 @@
+Flavours in Java
+================
+We have three flavours in java.
+
+				JAVA
+	|-------------------------|------------------------|
+	JSE/J2SE		JEE/J2EE		JME/J2ME
+(Java Standard Edition)	(Java Enterprise Edition)  (Java Micro Edition)
+
+> Standalone App 	> Distributed App 		> Mobile App
+
+> Desktop App 		> Enterprise App 
+	
+> Two-tier App 		> ERP App 
+
+			> N-tier App 
+
+
+> Standalone App
+-----------------
+A normal java program which contains main method is called standalone application.
+ex:
+	class Test
+	{
+		public static void main(String[] args)
+		{
+			-
+			- //code to be execute 
+			-
+		}
+	}
+
+> Desktop App 
+-------------
+It is a software application or a program specially designed to perform perticular task.
+ex:
+	Control Panel 
+	Recycle Bin 
+	VLC Media player 
+	and etc.
+
+> Two-tier App 
+---------------
+Having more then one tier is called two-tier application.
+
+Diagram: class2.1
+Diagram: class2.2
+
+
+> Distributed App
+-----------------
+Diagram: class2.3
+
+In client-server application, if multiple requests go to main server then main server will distribute those requests to it's parallel servers to reduce the burdun of main server such type of application is called distributed application.
+
+
+> Enterprise App 
+-----------------
+An application which deals with large complex business logic by the taking the support of middleware service is called enterprise application.
+
+Here middleware services means authentication, autherization, maleware production,security and etc.
+
+ex:
+	zoom meeting 
+	skype 
+	online shopping websites 
+	and etc.
+
+> ERP App 
+----------
+ERP stands for Enterprise Resource Planning.
+
+It is a unified software system that integrates core business processes—such as finance, HR, manufacturing, supply chain, services, and procurement—into a single database.
+
+Diagram: class2.4
+
+> N-tier App 
+------------
+Having more then two tiers is called N-tier application.
+
+
+
+Mobile App
+-----------
+It is a software application or program specially designed for wireless network devices like phone,tab, cell, cellular and etc rather than laptop's and pc's.
+ex:
+	PubG
+	Gpay 
+	Temple run 
+	and etc.
+
+Note:
+-----
+JME flavour is outdated in java because we got many alternate technologies to develop mobile applications.
+ex:
+	Android
+	React Native 
+	Flutter 
+	Swift Programming 
+	and etc.
+
+Interview Question
+-------------------
+Q) What is Java?
+
+Java is a versatile programming language which is used to develop various applications like standalone applications, desktop applications, distributed applications, ERP applications, mobile applications, networking applications and etc.
+
+
+
+
+
+
+
+
+

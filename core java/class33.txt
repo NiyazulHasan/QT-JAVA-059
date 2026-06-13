@@ -1,0 +1,279 @@
+Interface
+==========
+It is a blue print of a class and it is a collection of abstract methods, default methods, static methods and private methods.
+
+Abstract methods are incomplete methods because they ends with semicolon and do not have any body.
+ex:
+	public abstract void methodOne();
+
+It is not possible to create object for interfaces because it contains methods without implementation/body.
+
+To write the implementation of abstract methods we need to use implementation class.
+
+It is possible to create object for implementation class because it contains methods with body.
+
+Interface contains only constants i.e public static final.
+
+By default every abstract method is a public and abstract.
+ex:
+	void methodOne(); 
+
+If we know service requirement specifications (What To Do) then we need to use interface.
+
+Diagram: class33.1
+
+ex:1
+----
+interface ATM 
+{
+	//abstract method 
+	public abstract void deposit();
+}
+class ATMImpl implements ATM
+{
+	@Override
+	public void deposit()
+	{
+		System.out.println("Deposit Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		ATM atm = new ATMImpl();
+		atm.deposit();
+	}
+}
+
+ex:
+---
+interface ATM 
+{
+	//abstract method 
+	public abstract void deposit();
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		//Anonymous inner class
+		ATM atm = new ATM()
+		{
+			public void deposit()
+			{
+				System.out.println("From Deposit Method");
+			}
+		};
+		atm.deposit();
+	}
+}
+
+Note:
+-----
+If interface contains four methods then we need to override all methods.
+
+ex:
+---
+interface ATM 
+{
+	public abstract void deposit();
+	public void withdrawl();
+	abstract void miniStatement();
+	void balanceEnquiry();
+}
+class ATMImpl implements ATM 
+{
+	@Override
+	public void deposit()
+	{
+		System.out.println("Deposit Method");
+	}
+	@Override
+	public void withdrawl()
+	{
+		System.out.println("Withdrawl Method");
+	}
+	@Override
+	public void miniStatement()
+	{
+		System.out.println("Ministatement Method");
+	}
+	@Override
+	public void balanceEnquiry()
+	{
+		System.out.println("Balance Enquiry Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		ATM atm = new ATMImpl();
+		atm.deposit();
+		atm.withdrawl();
+		atm.miniStatement();
+		atm.balanceEnquiry();
+	}
+}
+
+Note:
+----
+One class can't extends more then one class.
+One interface can extends more then one interface.
+
+ex:
+---
+interface A 
+{
+	void m1();
+}
+interface B 
+{
+	void m2();
+}
+interface C extends A,B
+{
+	void m3();
+}
+class D implements C 
+{
+	@Override 
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+	@Override 
+	public void m2()
+	{
+		System.out.println("M2-Method");
+	}
+	@Override 
+	public void m3()
+	{
+		System.out.println("M3-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		C c = new D();
+		c.m1();
+		c.m2();
+		c.m3();
+	}
+}
+
+Note:
+-----
+A class can implements more than one interface.
+
+ex:
+---
+interface Father 
+{
+	double HT = 6.2d;
+	void height();
+}
+interface Mother 
+{
+	double HT = 5.8d;
+	void height();
+}
+class Child implements Father,Mother
+{
+	@Override 
+	public void height()
+	{
+		double height = (Father.HT + Mother.HT)/2;	
+		System.out.println("Child Height :"+height);
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Child c = new Child();
+		c.height();
+	}
+}
+
+
+Q) How to achieve multiple inheritance in java?
+
+In Java, multiple inheritance is not supported with classes, but it is achieved using interfaces.
+
+ex:
+---
+interface Training
+{
+	void courseName();
+}
+interface Practicals
+{
+	void  mockTest();
+}
+class Job implements Training,Practicals
+{
+	@Override 
+	public void courseName()
+	{
+		System.out.println("Full Stack Java");
+	}
+	@Override
+	public void mockTest()
+	{
+		System.out.println("System Mock Test");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Job j = new Job();
+		j.courseName();
+		j.mockTest();
+	}
+}
+
+
+Marker interface
+================
+Interface which does not contain any methods or constants is called marker interface.
+
+In general , empty interface is called marker interface.
+
+We have following list of marker interfaces.
+ex:
+	Serializable 
+	Cloneable 
+	Remote 
+	and etc
+
+By using marker interface we will get some ability to do.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

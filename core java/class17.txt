@@ -1,0 +1,334 @@
+5) Arithmetic operators 
+=======================
+We have following list of arithmetic operators according to operators precedence.
+
+ex:	
+	* - multiplication 
+	/ - division 
+	% - modules 
+	+ - addition 	
+	- - subtraction 
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i = 5+6-2*10+6/2+7%3+6*2+10/20+3%40+6-10;
+		System.out.println(i); 
+	}
+}
+/*
+	5+6-2*10+6/2+7%3+6*2+10/20+3%40+6-10
+	5+6-20+6/2+7%3+12+10/20+3%40+6-10
+	5+6-20+3+7%3+12+0+3%40+6-10
+	5+6-20+3+1+12+0+3+6-10
+	36-20-10
+	16-10
+	6
+*/
+
+
+6) Relational operators 
+========================
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		System.out.println(10>20); // false 
+		System.out.println(10<20); // true 
+		
+		System.out.println(10>=20); // false 
+		System.out.println(10<=10); // true 
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		System.out.println(10==20); // false 
+		System.out.println(10==10); // true 
+		
+		System.out.println(10!=20); // true
+		System.out.println(10!=10); // false
+	}
+}
+
+
+7) Shift operators 
+==================
+
+Left Shift operator (<<)
+------------------------
+10 << 1 = 10*2
+10 << 2 = 10*4
+10 << 3 = 10*8 
+-
+-
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i = 10 << 3;
+		
+		System.out.println(i); // 10*8 = 80
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i = 100 << 6;
+		
+		System.out.println(i); // 100 * 64 = 6400
+	}
+}
+
+Right Shift operator (>>)
+-------------------------
+10 >> 1 = 10/2
+10 >> 2 = 10/4
+10 >> 3 = 10/8 
+-
+-
+ex:
+
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i = 10>>2;
+		
+		System.out.println(i); // 10/4 = 2
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i = 100 >> 4;
+		
+		System.out.println(i); // 100/16 = 6
+	}
+}
+
+8) Unary operator 
+=================
+
+Increment/Decrement operator(++/--)
+-----------------------------------
+We have two types of increment operators.
+
+1) Post Increment 
+	ex:
+		i++;
+	
+2) Pre Increment 
+	ex:
+		++i;	
+
+We have two types of decrement operators.
+
+
+1) Post Decrement 
+	ex:		
+		i--;
+
+2) Pre Decrement 
+	ex:
+		--i;
+
+POST Increment/Decrement 
+------------------------
+Rule1: First Take 
+Rule2: Then Change 
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+	
+		System.out.println(i++); // 10
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+	
+		System.out.println(i--); // 10
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = i++ + i++;//10+11
+	
+		System.out.println(i+" "+j); // 12  21
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = i-- + i--; // 10+9
+	
+		System.out.println(i+" "+j); // 8 19
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = i++ + i++ + i--; // 10 11 12
+	
+		System.out.println(i+" "+j); // 11  33
+	}
+}
+
+PRE Increment/Decrement 
+-----------------------
+Rule1: First Change 
+Rule2: Then Take 
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		System.out.println(++i); // 11
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = ++i + ++i; // 11 + 12
+		
+		System.out.println(i+" "+j);// 12  23
+	}
+}
+
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		int j = --i + --i; // 9 + 8 
+		
+		System.out.println(i+" "+j);// 8  17 
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		System.out.println(i++ + ++i); // 10 + 12 
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=100;
+		
+		100++;
+		
+		System.out.println(i); //  C.T.E 
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+	
+		System.out.println((++i)++); // C.T.E 
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

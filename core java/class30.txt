@@ -1,0 +1,575 @@
+Encapsulation 
+=============
+The process of encapsulating or wrapping variables and it's associate methods in a single entity is called encapsulation.
+
+Diagram: class30.1
+
+A class is said to encapsulated class if it supports data hiding and abstraction.
+
+Abstraction is used to hide the data and encapsulation is used to protect the data.
+
+In encapsulation , for every variable we need to declare setter and getter methods.
+
+The main advantages of encapsulation are 
+
+1) It gives security.
+
+2) Enhancement becomes more easy.
+
+3) It provides flexibility to the enduser.
+
+4) It improves maintainability of an application.
+
+The main disadvantage of encapsulation is it will increase the length of our code and slow down the execution process.
+
+ex:
+---
+class Student 
+{
+	//current class variables
+	private int studId;
+	private String studName;
+	private double studFee;
+	
+	//setter methods 
+	public void setStudId(int studId)
+	{
+		this.studId=studId;
+	}
+	public void setStudName(String studName)
+	{
+		this.studName=studName;
+	}
+	public void setStudFee(double studFee)
+	{
+		this.studFee = studFee;
+	}
+	
+	//getter methods 
+	public int getStudId()
+	{
+		return studId;
+	}
+	public String getStudName()
+	{
+		return studName;
+	}
+	public double getStudFee()
+	{
+		return studFee;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Student s = new Student();
+		s.setStudId(101);
+		s.setStudName("Alan");
+		s.setStudFee(10000d);
+		
+		System.out.println("Student Id : "+s.getStudId());
+		System.out.println("Student Name : "+s.getStudName());
+		System.out.println("Student Fee : "+s.getStudFee());
+	}
+}
+
+
+Q) What is difference between Abstraction and Encapsulation ?
+
+Abstraction				Encapsulation 
+-----------				--------------
+Hiding internal implementation and 	The process of wrapping variables and it's 
+highlighting the set of services is 	associate methods in a single entity is called
+called abstraction.			encapsulation.
+
+The best example of abstraction is 	The best example of encapsulation is 
+GUI ATM machine.			capsule.
+
+Using abstract classes and interfaces	Using access modifiers we can achieve
+we can achieve abstraction.		encapsulation.
+
+It is used to hide the data.		It is used to protect the data.
+
+It is a process of gaining the 		It is a process of containing the information.
+information.
+
+It solves the issue at design level.	It solves the issue at implementation level.
+
+
+
+Q) What is tightly encapsulated class?
+
+A class is tightly encapsulated if every variable is private, meaning the internal data is fully protected and can only be accessed through methods.
+
+ex:1
+----
+	class A 
+	{
+		int i;
+	}
+	// It is not a tightly encapsulated class 
+
+ex:2
+---
+	class A 
+	{
+		private int i;
+		int j;
+	}
+	// It is not a tightly encapsulated class 
+
+ex:3
+----
+	class A 
+	{
+		int i;
+	}
+	class B extends A 
+	{	
+		private int j;
+	}
+	// It is not a tightly encapsulated class 
+	
+ex:4
+----
+	class A 
+	{
+		private int i;
+		private int j;
+	}
+	// tightly encapsulated class 
+
+
+Is-A relationship 
+=================
+Is-A relationship is also known as inheritance.
+
+By using extends keyword we can implements Is-A relationship.
+
+The main objective of Is-A relationship is to provide reusability.
+
+ex:
+---
+class Parent 
+{
+	public void methodOne()
+	{
+		System.out.println("Method-One");
+	}
+}
+class Child extends Parent
+{
+	public void methodTwo()
+	{
+		System.out.println("Method-Two");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Parent p = new Parent();
+		p.methodOne();
+		
+		Child c = new Child();
+		c.methodOne();
+		c.methodTwo();
+		
+		Parent p1 = new Child();
+		p1.methodOne();
+		
+		//Child c1 = new Parent(); // invalid 
+	}
+}
+
+conclusion 
+----------
+1) Whatever parent having properties by default go to child. but whatever child having 
+   properties never go back to parent.
+
+2) A parent reference can hold child object but child reference can't hold parent object.
+
+
+Inheritance 
+===========
+It is a core principle of object oriented programming in which we derived a class in the presence of existing class.
+
+It is a mechanism in which one class inherits the properties of another class.
+
+The main objective of inheritance is to promote reusability.
+
+Diagram: class30.2
+
+We have five types of inheritance.
+
+1) Single Level inheritance 
+
+2) Multi-Level inheritance
+
+3) Multiple inheritance 
+
+4) Hierarchical inheritance
+
+5) Hybrid inheritance 
+
+1) Single Level inheritance 
+---------------------------
+If we derived a class in the presence of one base class is called single level inheritance.
+
+Diagram:
+		A (Parent/Super/Base class)
+		|
+		|
+		|		
+		B (Child/Sub/Derived class)
+
+
+ex:
+---
+class A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class B extends A 
+{
+	public void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a = new A();
+		a.m1();
+		
+		B b = new B();
+		b.m1();
+		b.m2();
+	}
+}
+
+2) Multi-Level inheritance
+--------------------------
+If we derived a class in the presence of one base class and that class is derived from another base class is called multi level inheritance.
+
+Diagram:
+		A
+		|
+		|
+		B
+		|
+		|
+		C 
+
+ex:
+---
+class A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class B extends A 
+{
+	public void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+class C extends B 
+{
+	public void m3()
+	{
+		System.out.println("M3-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a = new A();
+		a.m1();
+		
+		B b = new B();
+		b.m1();
+		b.m2();
+		
+		C c = new C();
+		c.m1();
+		c.m2();
+		c.m3();
+	}
+}
+
+3) Multiple inheritance
+-----------------------
+In java, a class can't extends more then one class simultenously because java does not support multiple inheritance.
+ex:
+	class A 
+	{
+	}
+	class B 
+	{
+	}
+	class C extends A,B  --> invalid 
+	{
+	}
+
+But interface can extends more then one interface so we can achieve multiple inheritance concept through interfaces.
+ex:
+	interface A 
+	{	
+	}
+	interface B 
+	{	
+	}
+	interface C extends A,B
+	{
+	}
+	
+If our class does not extends any other class then it is a direct child class of Object class.
+ex:			diag:
+	class A 		Object
+	{			|
+	}			|
+				A 
+
+If our class extends some other class then our class is a indirect child class of Object class.
+ex:			diag:
+	class A 		Object
+	{			|
+	}			|
+	class B 		A
+	{			|
+	}			|
+				B
+
+Java does not support cyclic inheritance.
+ex:
+	class A extends B 
+	{
+	}
+	class B extends A 
+	{
+	}
+
+Q) Why java does not support multiple inheritance?
+
+There is a chance of raising ambiguity problem that's why java does not support multiple inheritance.
+ex:
+	P1.m1()			P2.m1()
+	|-----------------------------|
+			|
+			C.m1()
+
+
+4) Hierarchical inheritance
+-----------------------------
+If we derived multiple classes using one base class is called hierarchical inheritance.
+
+Diag:
+			A
+			|
+	|-------------------------------|
+	B				C 
+
+ex:
+---
+class A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class B extends A 
+{
+	public void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+class C extends A
+{
+	public void m3()
+	{
+		System.out.println("M3-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a = new A();
+		a.m1();
+		
+		B b = new B();
+		b.m1();
+		b.m2();
+		
+		C c = new C();
+		c.m1();
+		c.m3();
+	}
+}
+
+5) Hybrid inheritance 
+---------------------
+Hybrid inheritance is a combination of more than two inheritance.
+Java does not support hybrid inheritance.
+Diag:
+			A
+			|
+	|-------------------------------|
+	B				C 
+	|-------------------------------|
+			|
+			D 
+
+
+constructors 
+============
+It is a special method which is used to initialize an object.
+
+Having same name as class name is called constructor.
+
+A constructor is called when instance of a class is created.
+
+It does not allow any return type. If we declare any returntype then it won't give compile time error or runtime error.
+
+It accept following modifiers.
+ex:
+	default 
+	public 
+	private 
+	protected 
+
+In java, constructors are divided into two types.
+
+1) Userdefined constructor 
+
+2) Default constructor 
+
+1) Userdefined constructor 
+--------------------------
+A constructor which is created by the user based on the application requirements is called user defined constructor.
+
+It is classified into two types.
+
+i) Zero-Argument Constructor 
+
+ii) Parameterized Constructor 
+
+i) Zero-Argument Constructor
+----------------------------
+Suppose if we are not passing any argument to userdefined constructor then that constructor is called zero argument constructor.
+
+ex:
+----
+
+class Test 
+{
+	Test()
+	{
+		System.out.println("constructor");	
+	}
+	
+	public static void main(String[] args)
+	{
+		System.out.println("main-method");
+	}
+}
+o/p:
+	main-method
+
+ex:
+---
+class Test 
+{
+	public Test()
+	{
+		System.out.println("constructor");	
+	}
+	
+	public static void main(String[] args)
+	{
+		System.out.println("main-method");
+	}
+}
+o/p:
+	main-method
+
+ex:
+---
+class Test 
+{
+	private Test()
+	{
+		System.out.println("constructor");	
+	}
+	
+	public static void main(String[] args)
+	{
+		System.out.println("main-method");
+		Test t = new Test();
+	}
+}
+o/p:
+	main-method
+	constructor
+
+ex:
+---
+class Test 
+{
+	protected Test()
+	{
+		System.out.println("constructor");	
+	}
+	
+	public static void main(String[] args)
+	{
+		Test t1=new Test();
+		System.out.println("main-method");
+		Test t2=new Test();
+	}
+}
+o/p:
+	constructor
+	main-method
+	constructor
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

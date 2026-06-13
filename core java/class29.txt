@@ -1,0 +1,377 @@
+Jagged Array 
+============
+Jagged array is also known as array of arrays.
+
+It is a multi dimensional array where each row having different column size.
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] arr = {
+						{1,2,3,4},
+						{5,6},
+						{7,8,9}
+					};
+					
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=0;j<arr[i].length;j++)
+			{
+				System.out.print(arr[i][j]+" ");
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+Anonymous array 
+===============
+Sometimes we will declare an array without name such type of nameless array is called anonymous array.
+
+The main objective of anonymous array is just for instance use.
+
+We can declare anonymous arrays as follow.
+ex:
+	new int[]{10,20,30};
+	new int[][]{{1,2,3},{4,5,6},{7,8,9}};
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		sum(new int[]{10,20,30});	
+	}
+	public static void sum(int[] arr)
+	{
+		int sum=0;
+		for(int i : arr)
+		{
+			sum+=i;
+		}
+		System.out.println(sum); 
+	}
+}
+
+Multi-Dimensional Array 
+=======================
+If array contains more than two dimensions are called multi-dimensional array.
+
+Multi dimensional array is used to store the data in structured, layered and tabular format to establish the relationship between arrays.
+
+We can declare and create multi-dimensional array as follow.
+ex:
+			base index   cols 
+			        |     |
+	int[][][] arr = new int[2][3][3];
+				   | 
+				  rows
+
+	Here we can store 18 elements.
+
+We can initialized multi-dimensional array as follow.
+ex
+	int[][][] arr = {
+				{
+					{1,2,3},
+					{4,5,6},
+					{7,8,9}
+				},
+				{
+					{1,2,3},
+					{4,5,6},
+					{7,8,9}
+
+				}
+			};
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][][] arr = {
+							{
+								{1,2,3},{4,5,6},{7,8,9}
+							},
+							{
+								{1,2,3},{4,5,6},{7,8,9}
+							}
+						};
+						
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=0;j<arr[i].length;j++)
+			{
+				for(int k=0;k<arr[i][j].length;k++)
+				{
+					System.out.print(arr[i][j][k]+" ");
+				}
+				//new line 
+				System.out.println();
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+
+OOPS 
+=====
+OOPS stands for Object Oriented Programming System/Structure.
+
+It allows us to deal with real world entities using programming language.
+
+A language said to be object oriented if it supports following features.
+ex:
+	class 
+	object 
+	abstraction 
+	encapsulation 
+	inheritance &
+	polymorphism 
+
+class
+=====
+A class is a blue print of an object.
+ex:
+	Design 
+	Template 
+
+It is a logical entity.
+
+It is a collection of objects.
+
+A class will accept following modifiers.
+ex:
+	default 
+	public 
+	final 
+	abstract 
+	sealed 
+	non-sealed 
+
+We can declare a class as follow.
+
+syntax:
+-------
+	optional 
+	|
+	Modifier class  class_name  <extends> Parent_name 
+			  	    <implements> interface_name
+	{
+		-
+		-
+		-
+	}
+		
+object
+=======
+It is a outcome of a blue print.
+
+It is a instance of a class. Here instance means allocating memory for our data members.
+
+It is a collection of properties and behaviours.
+ex:
+			Dog
+			|
+	|---------------------------------|
+Properties				Behaviours
+
+Name					eating 
+Age					running 
+Color 					sleeping 
+Height 					and etc.
+Width 
+Breed 
+and etc.
+
+It is a physical entity.
+
+It is possible to create more then one object in a single class.
+
+We can create object as follow.
+
+syntax:
+-------
+	<Class_name> reference_variable = new  constructor();
+ex:
+	Test  t = new  Test();
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Test t1 = new Test();
+		Test t2 = new Test();
+		
+		System.out.println(t1.hashCode());
+		System.out.println(t2.hashCode());
+		
+		System.out.println(t1); //Test@Hexadecimalno
+		System.out.println(t2.toString());
+	}
+}
+
+
+Q) What is hash code in java?
+
+For every object, JVM creates a unique identification number i.e hash code.
+
+In order to read hash code of an object we need to use hashCode() method of Object class.
+
+Diagram: class29.1
+
+
+Q) What is toString() method ?
+
+Whenever we are trying to display any object reference directly or indirectly toString() method will be executed.
+
+A toString() method present in Object class.
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {10,20,30};
+		System.out.println(arr); // [I@Hexadecimalno
+		System.out.println(arr.toString()); // [I@Hexadecimalno
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println(t); // Test@Hexadecimalno
+		System.out.println(t.toString()); // Test@Hexadecimalno
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println(t); 
+	}
+	@Override
+	public String toString()
+	{
+		return "Hello World";
+	}
+}
+
+
+Q) What is the difference between class and object ? 
+
+class					object
+-----------				----------
+To declare a class we use class keyword.To declare object we use new keyword.
+
+It is a blue print of an object.	It is a instance of a class.
+ex:					ex:
+	design or template 			dog 
+
+It is a collection of objects.		It is a collection of properties and behaviours.
+
+It is a logical entity.			It is a physical entity.
+
+It can't be modified.			It can be modified.
+
+It can't be redeclared.			It can be redeclared.
+
+
+
+
+Data Hiding
+===========
+The process of hiding object data from unauthorized access is called data hiding.
+
+Using private modifier we can implements data hiding concept.
+
+The main objective of data hiding is to provide security.
+
+ex:
+---
+class Account 
+{
+	private double balance = 10000d;
+}
+class Student 
+{
+	public static void main(String[] args)
+	{
+		Account account = new Account();
+		System.out.println(account.balance);
+	}
+}
+
+Abstraction 
+===========
+Hiding internal implementation and highlighting the set of services is called abstraction.
+
+Using abstract classes and interfaces we can implements abstraction.
+
+The best example of abstraction is GUI ATM machine where bank people will hide internal implementation and highlights the set of services like banking, withdrawl, mini statement and etc .
+
+The main advantages of abstraction are.
+
+1) It gives security because it hides internal implementation.
+
+2) Enhancement becomes more easy because without effecting enduser they can perform 
+   any changes in our internal system.
+
+3) It provides flexibility to the enduser to use the system.
+
+4) It improves maintainability of an application.
+
+
+Q) What is the difference between final class and abstract class?
+
+final class				abstract class
+---------------				----------------
+To declare final class we will use 	To declare abstract class we will use 
+final keyword.				abstract keyword.
+ex:					ex:
+	final class A 				abstract class A 
+	{					{
+	}					}
+
+
+Child creation is not possible.		Child creation is possible.
+
+Object creation is possible.		Object creation is not possible.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,471 @@
+Blocks in Java
+===============
+It is a set of statements which is enclosed in a curly braces i.e {}.
+
+In java, we have three types of blocks.
+
+1) Instance block 
+
+2) Static block 
+
+3) Local block 
+
+1) Instance block 
+------------------
+Instance block is used to initialize the instance variables.
+
+Instance block will execute when instance of a class is created.
+
+Instance block must and should declare immediately after the class but not inside methods and constructors.
+
+We can declare instance block as follow.
+
+syntax:
+-------
+	//instance block 
+	{
+		-
+		- // set of statements
+		-
+	}
+
+
+ex:1
+----
+class Test 
+{
+	//instance block 
+	{
+		System.out.println("instance-block");
+	}
+	
+	public static void main(String[] args) 
+	{
+		System.out.println("main-method");		
+	}
+}
+o/p:
+	main-method 
+
+
+ex:
+---
+class Test 
+{
+	//instance block 
+	{
+		System.out.println("instance-block");
+	}
+	
+	public static void main(String[] args) 
+	{
+		System.out.println("main-method");	
+		Test t = new Test();
+	}
+}
+
+ex:
+---
+class Test 
+{
+	//instance block 
+	{
+		System.out.println("instance-block");
+	}
+	
+	public static void main(String[] args) 
+	{
+		Test t1 = new Test();
+		System.out.println("main-method");	
+		Test t2 = new Test();
+	}
+}
+
+ex:
+---
+class Test 
+{
+	//instance variable 
+	int i;
+	
+	//instance block
+	{
+		i=100;
+	}
+	
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println(t.i); // 100
+	}
+}
+
+
+
+
+2) Static block 
+------------------
+Static block is used to initialize the static variables.
+
+Static block will execute at the time of class loading.
+
+Static block must and should declare immediately after the class using static keyword but not inside methods and constructors.
+
+We can declare static block as follow.
+
+syntax:
+------
+	//static block 
+	static
+	{
+		-
+		- //set of statements 
+		-
+	}
+
+ex:1
+----
+class Test 
+{
+	//static block 
+	static
+	{
+		System.out.println("static-block");
+	}
+	
+	public static void main(String[] args) 
+	{
+		System.out.println("main-method");
+	}
+}
+o/p:
+	static-block 
+	main-method 
+
+ex:2
+----
+class Test 
+{
+	//instance block 
+	{
+		System.out.println("instance-block");
+	}
+	//static block 
+	static
+	{
+		System.out.println("static-block");
+	}
+	
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println("main-method");
+	}
+}
+o/p:
+	static-block 
+	instance-block 
+	main-method 
+
+ex:3
+----
+class Test 
+{
+	//static variable 
+	static int i;
+	
+	//static block 
+	static
+	{
+		i=200;
+	}
+	
+	public static void main(String[] args) 
+	{
+		System.out.println(i); // 200
+	}
+}
+
+3) Local block 
+--------------
+Local block is used to initialize the local variables.
+
+Local block will execute just like a normal statement.
+
+Local block must and should declare inside methods and constructors.
+
+We can declare local block as follow.
+
+syntax:
+------
+	//local block 
+	{
+		-
+		- //set of statements 
+		-
+	}
+
+ex:1
+----
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		//local block 
+		{
+			System.out.println("stmt2");
+		}
+		
+		System.out.println("stmt3");
+	}
+}
+
+ex:2
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		//local variable
+		int i;
+		
+		//local block 
+		{
+			i=300;
+		}
+		
+		System.out.println(i); // 300
+	}
+}
+
+Operators 
+==========
+Operator is a symbol which is used to perform some operations on operands.
+ex:
+	c = a + b; 
+	
+	Here a,b and c are operands.	
+	Here = and + are operators.
+
+We have following list of operators in java.
+
+1) Assignment operators 
+
+2) Ternary operators/Conditional operators 
+
+3) Bitwise operators 
+
+4) Logical operators 
+
+5) Arithmetic operators 
+
+6) Relational operators 
+
+7) Shift operators 
+
+8) Unary operators 
+
+1) Assignment operators
+-----------------------
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		i=20;
+		
+		i=30;
+		
+		System.out.println(i); // 30
+	}
+}
+Note:
+-----
+	Reinitialization is possible in java.
+
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		final int i=10;
+		
+		i=20;
+		
+		i=30;
+		
+		System.out.println(i); // C.T.E 
+	}
+}
+Note:
+-----
+	We can't modify final variable 
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i,j;
+		i = j = 10;
+		System.out.println(i+" "+j);// 10  10
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i = 1,2,3,4,5;
+		System.out.println(i);// C.T.E 
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		i+=5; // i = i + 5;
+		
+		System.out.println(i);//15
+	}
+}
+
+ex:
+--
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		i-=5; // i = i - 5;
+		
+		System.out.println(i);//5
+	}
+}
+
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		i*=5; // i = i * 5;
+		
+		System.out.println(i);//50
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		i/=5; // i = i / 5;
+		
+		System.out.println(i);//2
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		i/=50; // i = i / 50;
+		
+		System.out.println(i);//0
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		i%=5; // i = i % 5;
+		
+		System.out.println(i);//0
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int i=10;
+		
+		i%=50; // i = i % 50;
+		
+		System.out.println(i);//10
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

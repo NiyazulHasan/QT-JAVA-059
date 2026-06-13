@@ -1,0 +1,496 @@
+Wrapper classes 
+===============
+The main objective of wrapper classes are 
+
+1) To wrap primitive type to wrapper object and vice versa.
+
+2) To define several utility methods.
+
+ex:
+	Primitive Type		Wrapper class
+	---------------		--------------
+	byte 			Byte
+	short			Short
+	int 			Integer
+	long 			Long		
+	float 			Float
+	double 			Double 		
+	boolean 		Boolean 
+	char 			Character 
+
+constructor 
+----------
+For every wrapper class we can create two constructors. One will take corresponding primitive as an argument and another will take corresponding string as an argument.
+
+ex:
+	Wrapper class		Constructor
+	--------------		-----------
+	Byte			byte or String 	
+	Short			short or String 
+	Integer			int or String 
+	Long 			long or String 
+	Float 			float or String 
+	Double 			double or String 
+	Boolean 		boolean or String 
+	Character 		char
+
+ex:1
+----
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		Integer i1 = Integer.valueOf(10);
+		System.out.println(i1); 
+		
+		Integer i2 = Integer.valueOf("20");
+		System.out.println(i2);
+	}
+}
+
+ex:2
+----
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		Boolean b1 = Boolean.valueOf(true);
+		System.out.println(b1);
+		
+		Boolean b2 = Boolean.valueOf("false");
+		System.out.println(b2);
+	}
+}
+
+ex:
+---
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		Character c = Character.valueOf('a');
+		System.out.println(c); // a 
+	}
+}
+
+Utility Methods 
+===============
+
+1) valueOf() 
+------------
+It converts primitive type or String type to wrapper object.
+
+ex:
+---
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		//primitive type 
+		int a=10; 
+		
+		//wrapper object
+		Integer i = Integer.valueOf(a);
+		
+		System.out.println(i); 
+	}
+}
+
+ex:
+---
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		//string type 
+		String s  = "20"; 
+		
+		//wrapper object
+		Integer i = Integer.valueOf(s);
+		
+		System.out.println(i); 
+	}
+}
+
+2) xxxValue() 
+-------------
+It is used to convert wrapper object to primitive type.
+
+ex:
+---
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		//wrapper object 
+		Integer i = Integer.valueOf(10);
+		
+		//primitive type 
+		byte b = i.byteValue();
+		System.out.println(b); 
+		
+		short s = i.shortValue();
+		System.out.println(s);
+		
+		int  a = i.intValue();
+		System.out.println(a);
+	}
+}
+
+3) parseXxx() 
+----------------
+It is used to convert string type to primitive type or wrapper object.
+
+ex:
+---
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		//string type 
+		String s = "100";
+		
+		//primitive type 
+		int i = Integer.parseInt(s);
+		System.out.println(i);
+		
+		long l = Long.parseLong(s);
+		System.out.println(l);
+		
+		float f = Float.parseFloat(s);
+		System.out.println(f);
+	}
+}
+
+4) toString() 
+=============
+It is used to convert wrapper object to String type.
+
+ex:
+---
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		Integer i = Integer.valueOf(100);
+		
+		String s = i.toString();
+		
+		System.out.println(s); 
+	}
+}
+
+ex:
+---
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		String s = Integer.toString(200);
+		System.out.println(s); 
+	}
+}
+
+Q) What is Autoboxing and Autounboxing?
+
+Autoboxing 
+==========
+Automatic conversion performed by the compiler to convert primitive type to wrapper object at the time of compilation is called autoboxing.
+
+It internally uses valueOf() method.
+
+ex:
+----
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		//primitive type 
+		int a = 10;
+		
+		//wrapper object 
+		Integer i = a;
+		
+		System.out.println(i);
+	}
+}
+
+
+Autounboxing
+--------------
+Automatic conversion performed by the compiler to convert wrapper object to primitive type at the time of compilation is called autounboxing.
+
+It internally uses xxxValue() method.
+
+ex:
+---
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		//wrapper object
+		Integer i = Integer.valueOf(100);
+		
+		//primitive type 
+		int a = i;	
+		System.out.println(a);
+	
+	}
+}
+
+Q) Write a java program to perform sum of two binary numbers?
+
+input:
+	1010  (10)
+	0101  (5)
+output:
+	1111 (15)
+
+import java.util.Scanner;
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the first binary number :");
+		String binary1 = sc.next(); // 1010
+		
+		System.out.println("Enter the second binary number :");
+		String binary2 = sc.next(); // 0101
+		
+		//convert binary to decimal number 
+		int a = Integer.parseInt(binary1,2);
+		int b = Integer.parseInt(binary2,2);
+		
+		//logic
+		int c  = a + b;
+		
+		//convert decimal to binary number 
+		String result = Integer.toBinaryString(c);
+		System.out.println(result);
+	}
+}
+
+
+Inner classes 
+=============
+Sometimes we will declare a class inside another class such concept is called inner class.
+
+Inner classes introduced in 1.0 version as a part of event handling to remove GUI bugs.
+
+Due to powerful features and benefits of inner classes. Programmers started to use inner classes in regular programming.
+
+We can't declare static members inside inner classes.
+
+We have four types of inner classes.
+
+1) Normal/Regular inner class
+
+2) Static inner class 
+
+3) Method local inner class 
+
+4) Anonymous inner class 
+
+
+1) Normal/Regular inner class
+-----------------------------
+We will declare a class inside another class such concept is called normal/regular inner class.
+
+Inner class must be declare within the scope of enclosing class.
+
+ex:
+---
+class Outer 
+{
+	class Inner 
+	{
+		public void m1()
+		{
+			System.out.println("Inner class");
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		Outer.Inner i = new Outer().new Inner();
+		i.m1();
+	}
+}
+
+If we compile above program we will get two .class files i.e 
+Outer.class and Outer$Inner.class.
+
+
+ex:
+---
+class Outer 
+{
+	class Inner 
+	{
+		public void m1()
+		{
+			System.out.println("Inner class");
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		new Outer().new Inner().m1();
+	}
+}
+
+2) Static inner class 
+----------------------
+We will declare a class inside another class using static keyword such concept is called static inner class.
+
+In regular/normal inner class, without existing container object there is no chance of having contained object.
+
+ex:
+---
+class Outer 
+{
+	static class Inner 
+	{
+		public void m1()
+		{
+			System.out.println("Inner class");
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		Inner i = new Inner();
+		i.m1();
+	}
+}
+
+
+3) Method local inner class 
+---------------------------
+If we declare a class inside another class method such concept is called method local inner class.
+
+We will use method local inner class to execute method repeated execution logic.
+
+ex:
+---
+class Outer 
+{
+	public void m1()
+	{
+		class Inner 
+		{
+			public void sum(int a,int b)
+			{
+				System.out.println(a+b);
+			}
+		}
+		
+		Inner i = new Inner();
+		i.sum(1,2);
+		i.sum(10,20);
+		i.sum(100,200);
+	}
+	public static void main(String[] args)
+	{
+		Outer o = new Outer();
+		o.m1();
+	}
+}
+
+
+4) Anonymous inner class 
+-------------------------
+Sometimes we will declare a class without name such type of namesless class is called anonymous inner class.
+
+ex:
+---
+interface Animal 
+{
+	public abstract void sound();
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		//anonymous inner class
+		Animal a = new Animal()
+		{
+			public void sound()
+			{
+				System.out.println("Bow Bow");
+			}
+		};
+		a.sound();
+	}
+}
+
+ex:
+---
+abstract class Payment 
+{
+	//abstract method 
+	public abstract void pay();
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		//anonymous inner class
+		Payment p = new Payment()
+		{
+			public void pay()
+			{
+				System.out.println("UPI");
+			}
+		};
+		p.pay();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

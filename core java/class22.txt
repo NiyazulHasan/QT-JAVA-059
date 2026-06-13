@@ -1,0 +1,402 @@
+Q) Write a java program to find out given number is Armstrong or not?
+
+input:
+	153
+
+output: 
+	It is a Armstrong number 
+	(1*1*1+5*5*5+3*3*3) -> (1+125+27) -> 153
+
+ex:
+---
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt(); // 153
+		
+		int temp = n;
+		
+		int rem,sum=0;
+		while(n>0)
+		{
+			rem = n %10;
+			sum = sum + rem * rem * rem;
+			n = n /10;
+		}
+		
+		if(temp == sum)
+			System.out.println("It is a armstrong number");
+		else
+			System.out.println("It is not a armstrong number");
+		
+	}
+}
+
+Q) Write a java program to display reverse of a given number?
+
+input:
+	123
+output:
+	321
+
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt(); // 123
+		
+		int rem, rev=0;
+		while(n>0)
+		{
+			rem = n%10;
+			rev = rev*10+rem;
+			n = n/10;
+		}
+		System.out.println(rev);
+	}
+}
+
+Q) Write a java program to find out given number is palindrome or not?
+
+input:
+	121
+output:
+	It is a palindrome number 
+
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt(); // 123
+		
+		int temp = n;
+		
+		int rem, rev=0;
+		while(n>0)
+		{
+			rem = n%10;
+			rev = rev*10+rem;
+			n = n/10;
+		}
+		if(temp==rev)
+			System.out.println("It is a palindrome number");
+		else
+			System.out.println("It is not a palindrome number");
+		
+	}
+}
+
+
+Q) A frog felt down in a well of 10 meters. Everyday Frog tries to come out from the well. He Jumps 2 meters and rollback 1 meter. Write a java program to find out in how many days a frog can come out from the well?
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int wellLength = 10;
+		int jumps = 2;
+		int rollback = 1;
+		
+		int days=0;
+		int currentPosition = 0;
+		
+		while(currentPosition<wellLength)
+		{
+			currentPosition += jumps;
+			if(currentPosition>wellLength)
+			{
+				break;
+			}
+			currentPosition -= rollback;
+			days++;
+		}
+		System.out.println("In "+days+" days frog will come out from the well");
+	}
+}
+
+iii) for loop 
+=============
+It is used to execute the source code how long our conditions is true.
+
+syntax:
+------
+	for(initialization;condition;Increment/Decrement)
+	{
+		-
+		- //code to be execute
+		-
+	}
+
+Note:
+-----
+If number of iterations are known by the user then we need to use for loop.
+
+If number of iterations are not known by the user then we need to use while loop.
+
+If number of iterations are not known by the user but code must execute atleast for one time then we need to use do while loop.
+
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		for(int i=1;i<=10;i++)
+		{
+			System.out.print(i+" ");//1 2 3 4 5 6 7 8 9 10
+		}
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		for(int i=1;i<=10;i++)
+		{
+			if(i%2==0)
+			{
+				System.out.print(i+" ");//2 4 6 8 10
+			}
+		}
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int cnt = 0;
+		for(int i=1;i<=10;i++)
+		{
+			if(i%2==0)
+			{
+				cnt++;
+			}
+		}
+		System.out.println(cnt);//5
+	}
+}
+
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		for(int i=1;i<=10;i++)
+		{
+			if(i%2==0)
+			{
+				System.out.print(i+" ");// 2 6 10
+				i+=2;
+			}
+		}
+	}
+}
+	
+
+Q) Write a java program to find out given number is prime or not?
+
+input:
+	5
+output:
+	It is a prime number 
+
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt(); // 5
+		
+		boolean flag = true;
+		for(int i=2;i<=n/2;i++)
+		{
+			if(n%i==0)
+			{
+				flag=false;
+				break;
+			}
+		}
+		if(flag==true)
+			System.out.println("It is a prime number");
+		else
+			System.out.println("It is not a prime number");
+	}
+}
+
+Q) Write a java program to display prime numbers from 1 to 100?
+
+output:
+	2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 
+	43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97. 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		for(int n=2;n<=100;n++)
+		{
+			boolean flag=true;
+			for(int i=2;i<=n/2;i++)
+			{
+				if(n%i==0)
+				{
+					flag=false;
+					break;
+				}
+			}
+			if(flag==true)
+				System.out.print(n+" ");
+		}
+	}
+}
+
+Q) Write a java program to find out fibonaccie series of a given number?
+
+input:
+	6
+output:
+	0 1 1 2 3 5 8
+
+ex:
+---
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt(); // 6 
+		
+		int a=0,b=1,c;
+		System.out.print(a+" "+b+" ");
+		
+		for(int i=2;i<=n;i++)
+		{
+			c = a + b;
+			System.out.print(c+" ");
+			a = b;
+			b = c;
+		}
+	}
+}
+
+Q) Write a java program to find out given number is perfect or not?
+
+input:
+	6
+
+output:
+	It is a perfect number 
+
+
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt(); // 6 
+		
+		int sum = 0;
+		for(int i=1;i<n;i++)
+		{
+			if(n%i==0)
+			{
+				sum += i;
+			}
+		}
+		if(n == sum)
+			System.out.println("It is a perfect number");
+		else
+			System.out.println("It is not a perfect number");
+	}
+}
+
+Q) Write a java program to find out GCD (Greatest Common Divisor) of two numbers?
+
+input:
+	a=12, b=18
+
+output:
+	6 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int a=12,b=18,gcd=0;
+		
+		for(int i=1;i<=a && i<=b;i++)
+		{
+			if((a%i==0) && (b%i==0))
+			{
+				gcd = i;
+			}
+		}
+		System.out.println("GCD of two numbers is ="+gcd);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,195 @@
+int 
+=====
+It is mostly used datatype in java.
+
+Size : 4 bytes (32 bits)
+
+Range : -2147483648 to 2147483647 (-2^31 to 2^31-1)
+
+ex:
+	1) int i = 10.56;
+	   System.out.println(i); // C.T.E 
+
+	2) int i = "true";
+           System.out.println(i); // C.T.E 
+
+	3) int i = false;
+           System.out.println(i); // C.T.E 
+
+	4) int i = 'A';
+	   System.out.println(i); // 65
+
+Note:
+-----
+In java, every character contains universal unicode value.
+
+ex:
+	A - 65 
+	a - 97
+
+
+long 
+=====
+If int datatype is not enough to hold large value then we need to use long datatype.
+
+Size : 8 bytes (64 bits)
+
+Range : -2^63 to 2^63-1
+
+ex:
+	1) long l = true;
+	   System.out.println(l); // C.T.E 
+		
+	2) long l = "Hi";
+	   System.out.println(l); // C.T.E 
+
+	3) long l = 10.56;
+	   System.out.println(l); // C.T.E 
+	
+	4) long l = 'a';
+	   System.out.println(l); // 97
+
+
+
+
+
+
+float					double 
+---------------				-------------
+If we need 4 to 6 decimal point of  	If we need 14 to 16 decimal point 
+accuracy then we need to use float.	of accuracy then we need to use double.
+
+Size : 4 bytes (32 bits)		Size : 8 bytes (64 bits)
+
+Range : -3.4e38 to 3.4e38 		Range : -1.7e308 to 1.7e308
+
+To declare a float value we need to 	To declare a double value we need to 
+suffix with 'f' or 'F'.			suffix with 'd' or 'D'.
+ex:					ex:
+	10.56f					10.56d
+
+
+ex:
+	1) float f = 10.56f;
+	   System.out.println(f); // 10.56
+
+	2) float f = 10;
+	   System.out.println(f); // 10.0
+	
+	3) float f = 'a';
+	   System.out.println(f); // 97.0
+
+	4) float f = "Hi";
+	   System.out.println(f); // C.T.E 
+
+	5) float f = true;
+	   System.out.println(f); // C.T.E 
+
+ex:
+	1) double d = 10.56d;
+	   System.out.println(d); // 10.56
+
+	2) double d= 10;
+	   System.out.println(d); // 10.0
+	
+	3) double d = 'a';
+	   System.out.println(d); // 97.0
+
+	4) double d = "Hi";
+	   System.out.println(d); // C.T.E 
+
+	5) double d = true;
+	   System.out.println(d); // C.T.E 
+
+
+boolean 
+-------
+It is used to represent boolean values either true or false.
+
+Size : (Not Applicable)
+Range: (Not Applicable)
+
+ex:
+	1) boolean b = "true";
+	   System.out.println(b); // C.T.E 
+
+	2) boolean b = TRUE;
+	   System.out.println(b); // C.T.E 
+
+	3) boolean b = false;
+	   System.out.println(b); // false
+
+char 
+====
+It is a single character which is enclosed in a single quotation.
+
+Size : 2 bytes (16 bits)
+
+Range : 0 to 65535 
+
+ex:
+	1) char ch = 'a';
+	   System.out.println(ch); // a
+
+	2) char ch = "A";
+	   System.out.println(ch); // C.T.E 
+
+	3) char ch = 'ab';
+	   System.out.println(ch); // C.T.E 
+
+	4) char ch = 65;
+	   System.out.println(ch); // A
+
+Diagram: class8.1
+
+
+Q) Write a java program to display size of short datatype?
+
+class Test
+{
+	void main()
+	{
+		System.out.println(Short.BYTES);
+		System.out.println(Short.SIZE);
+	}
+}
+
+
+Q) Write a java program to find out size of int datatype?
+
+class Test
+{
+	void main()
+	{
+		System.out.println(Integer.BYTES);
+		System.out.println(Integer.SIZE);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

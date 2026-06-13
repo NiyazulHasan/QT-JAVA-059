@@ -1,0 +1,479 @@
+
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		ArrayList<String> al = new ArrayList();
+		al.add("one");
+		al.add("two");
+		al.add("three");
+		System.out.println(al); // [one,two,three]
+		
+		System.out.println(al.isEmpty()); // false 
+		
+		System.out.println(al.contains("two")); // true 
+		
+		al.remove("three");
+		System.out.println(al); // [one,two]
+		
+		al.clear();
+		System.out.println(al); // []
+	}
+}
+
+ex:
+--
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		List<String> list = new ArrayList<>();
+		list.add("one");
+		list.add("two");
+		list.add("three");
+		
+		for(int i=0;i<list.size();i++)
+		{
+			System.out.println(list.get(i)+" ");
+		}
+	}
+}
+
+Q) Write a java program to display intersect elements?
+
+input:
+	css  java  html  oracle  js
+	python html js   mysql  css
+output:
+	css html js 
+
+
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		ArrayList<String> list1 = new ArrayList<>();
+		list1.add("css");
+		list1.add("java");
+		list1.add("html");
+		list1.add("oracle");
+		list1.add("js");
+		
+		ArrayList<String> list2 = new ArrayList<>();
+		list2.add("python");
+		list2.add("html");
+		list2.add("js");
+		list2.add("mysql");
+		list2.add("css");
+		
+		list1.retainAll(list2);
+		System.out.println(list1);
+	}
+}
+
+
+
+LinkedList 
+==========
+The underlying data structure is doubly linkedlist.
+
+Duplicate objects are allowed.
+
+Insertion order is preserved.
+
+Hetrogeneous objects are allowed.
+
+Null insertion is possible.
+
+It implements List, Serializable, Cloneable and Deque interface.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		LinkedList ll = new LinkedList();
+		ll.add("one");
+		ll.add("two");
+		ll.add("three");
+		System.out.println(ll);//[one,two,three]
+		
+		ll.add("one");
+		System.out.println(ll); //[one,two,three,one]
+		
+		ll.add(10);
+		System.out.println(ll); //[one,two,three,one,10]
+		
+		ll.add(null);
+		System.out.println(ll); // [one,two,three,one,10,null]
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		LinkedList ll = new LinkedList();
+		ll.add("one");
+		ll.add("two");
+		ll.add("three");
+		System.out.println(ll);//[one,two,three]
+		
+		ll.addFirst("gogo");
+		ll.addLast("jojo");
+		System.out.println(ll); //[gogo,one,two,three,jojo]
+		
+		System.out.println(ll.getFirst()); // gogo
+		System.out.println(ll.getLast()); // jojo 
+		
+		ll.removeFirst();
+		ll.removeLast();
+		System.out.println(ll); //[one,two,three]
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		LinkedList ll1 = new LinkedList();
+		ll1.add("one");
+		ll1.add("two");
+		ll1.add("three");
+		System.out.println(ll1);//[one,two,three]
+		
+		LinkedList ll2 = new LinkedList();
+		ll2.add("raja");
+		System.out.println(ll2); //[raja]
+
+		
+		ll2.addAll(ll1);
+		System.out.println(ll2); // [raja,one,two,three]
+		
+		System.out.println(ll2.containsAll(ll1)); // true 
+		
+		ll2.removeAll(ll1);
+		System.out.println(ll2); //[raja]
+		
+	}
+}
+
+Q) What is the difference between ArrayList and LinkedList?
+
+ArrayList				LinkedList
+------------				------------
+The underlying data structure is 	The underlying data structure is 
+resizable array or growable array.	doubly linkedlist.
+
+It is best for storing and retrieving 	It is best for manipulating the data.
+the data.
+
+Memory location of ArrayList elements 	Memory location of LinkedList elements 
+are contigeous.				are not contigeous.
+
+When ArrayList is initialized a 	There is no case of default capacity.
+default capacity 10 is assigned to it.
+
+
+Vector 
+======
+The underlying data structure is resizable array or growable array.
+
+Duplicate objects are allowed.
+
+Insertion order is preserved.
+
+Hetrogeneous objects are allowed.
+
+Null insertion is possible. 
+
+All methods present in Vector as synchronized. Hence Vector is thread safe.
+
+Vector contains following methods.
+ex:
+	cmd> javap   java.util.Vector	
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Vector<Integer> v = new Vector<>();
+		
+		System.out.println(v.capacity()); // 10
+		
+		for(int i=1;i<=10;i++)
+		{
+			v.addElement(i);
+		}
+		System.out.println(v); //[1,2,3,4,5,6,7,8,9,10]
+		
+		System.out.println(v.firstElement()); // 1
+		System.out.println(v.lastElement()); // 10
+		
+		v.removeElement(5);
+		System.out.println(v); //[1,2,3,4,6,7,8,9,10]
+		
+		v.removeAllElements();
+		System.out.println(v); //[]
+	}
+}
+
+Q) What is the difference between ArrayList and Vector?
+
+ArrayList					Vector 
+--------------					---------
+It is a non-legacy class.			It is a legacy class.
+
+It is introduced in 1.2 version.		It is introduced in 1.0 version.
+
+At a time multiple threads are allowed		At a time only one thread is allowed
+to operate ArrayList object. Hence 		to operate Vector object. Hence Vector
+ArrayList is not thread safe.			is thread safe.
+
+Performance is high because there is 		Performance is low because there is  
+no waiting threads.				a waiting threads.
+
+
+
+Stack 
+======
+It is a child class of Vector class.
+
+If we depend upon Last In First Out (LIFO) order then we need to use Stack.
+
+constructor
+---------
+	Stack s = new Stack();
+
+Methods
+-------
+1) push(E) 
+---------
+	It push the element to stack.
+
+2) pop()
+--------
+	It pops the element from stack.
+
+3) peek()
+----------
+	It returns toppest element from stack.
+
+4) isEmpty()
+-----------
+	It is used to check stack is empty or not.
+
+5) search(E) 
+------------
+	It return offset value if element is found otherwise it will return -1.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Stack<String> s = new Stack<>();
+		s.push("A");
+		s.push("B");
+		s.push("C");
+		System.out.println(s); //[A,B,C]
+
+		s.pop();
+		System.out.println(s); //[A,B]
+		
+		System.out.println(s.peek()); // B 
+		
+		System.out.println(s.isEmpty()); // false
+		
+		System.out.println(s.search("Z")); // -1
+		
+		System.out.println(s.search("A")); // 2 
+	}
+}
+
+Interview Question 
+==================
+Q) Write a java program to check given string is balanced or not?
+
+input:
+	{[()]}
+output:
+	It is a balanced string 
+
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String str="{[()]}";
+		if(isBalanced(str.toCharArray()))
+			System.out.println("It is a balanced string");
+		else
+			System.out.println("It is not a balanced string");
+	}
+	public static boolean isBalanced(char[] carr)
+	{
+		Stack<Character> stack = new Stack<>();
+		
+		for(int i=0;i<carr.length;i++)
+		{
+			char ch = carr[i];
+			
+			if(ch=='{' || ch=='[' || ch=='(')
+			{
+				stack.push(ch);
+			}
+			else if(ch==')' && !stack.isEmpty() && stack.peek()=='(')
+			{
+				stack.pop();
+			}
+			else if(ch==']' && !stack.isEmpty() && stack.peek()=='[')
+			{
+				stack.pop();
+			}
+			else if(ch=='}' && !stack.isEmpty() && stack.peek()=='{')
+			{
+				stack.pop();
+			}
+			else
+			{
+				return false;
+			}
+		}
+		return stack.isEmpty();
+	}
+}
+
+Set
+====
+It is a child interface of Collection interface.
+
+If we want to represent group of individual objects in a single entity where duplicate objects are not allowed and order is not preserved then we need to use Set interface.
+
+Diagram: class45.1
+
+
+Set.of()
+========
+It is introduced in Java 9.
+It gives immutable object.
+Duplicate objects are not allowed.
+Null is not allowed.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Set<Integer> set = Set.of(7,2,9,1);
+		System.out.println(set);//[1, 7, 9, 2]
+	}
+}
+
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Set<Integer> set = Set.of(7,2,9,1,7);
+		System.out.println(set);
+	}
+}
+o/p:
+	R.E : IllegalArgumentException
+
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Set<Integer> set = Set.of(7,2,9,1,null);
+		System.out.println(set);
+	}
+}
+o/p:
+	R.E : NullPointerException
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

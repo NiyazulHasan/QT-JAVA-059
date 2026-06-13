@@ -1,0 +1,474 @@
+Limitations with FileWriter and FileReader 
+==========================================
+While writing the data using FileWriter we need to insert line seperaters (\n) which is very headache for the programmer.
+
+While reading the data using FileReader we need to read character by character which is not convenient to the programmer.
+
+To overcome this limitation Sun Micro System introduced BufferedWriter and BufferedReader.
+
+BufferedWriter 
+===============
+It is used to insert character oriented data into a file.
+
+constructure
+------------
+	BufferedWriter bw = new BufferedWriter(Writer w);
+
+BufferedWriter can't communicate with file directly. 
+It takes the support of some writer object.
+
+Note:
+-----
+	If file is not available then it will create a physical file.
+
+Methods
+-------
+1) write(int ch)
+--------------
+	It is used to insert a character into a file.
+
+2) write(char[] ch)
+-------------------
+	It is used to insert collection of characters into a file.
+
+3) write(String s)
+----------------
+	It is used to insert string into a file.
+
+4) flush()
+----------
+	It gives guaranttee that last character of a file is also inserted.
+
+5) close() 
+---------
+	It is used to close BufferedWriter object.
+
+6) newLine()
+-----------
+	It is used to insert new line in a file.
+
+
+ex:
+---
+import java.io.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("bbb.txt"));)
+		{
+			
+			bw.write(98); // b
+			bw.newLine();
+		
+			char[] ch={'a','b','c'};
+			bw.write(ch);
+			bw.newLine();
+		
+			bw.write("ihub");
+		
+			bw.flush();
+			System.out.println("Please check the location");
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+		
+	}
+}
+
+
+BufferedReader
+==============
+It is a enhanced read to read character oriented data from a file.
+
+constructor
+----------
+	BufferedReader br = new BufferedReader(Reader r);
+
+BufferedReader can't communicate with File directly.
+It takes the support of reader object.
+
+The main advantage of BufferedReader over FileReader is we can read the data line by line instead of character by character.
+
+Methods
+-------
+
+1) read()
+---------
+	It reads next character from a file and returns unicode value.
+	If next character is not available then it will return -1.
+
+2) read(char[] ch)
+---------------
+	It reads collection of characters from file.
+
+3) close() 
+---------
+	It is used to close BufferedReader object.
+
+4) readLine() 
+-------------
+	It is used to read next line from a file. If next line is not available 
+	then it will return null.
+
+ex:
+--
+import java.io.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		try (BufferedReader br = new BufferedReader(new FileReader("bbb.txt"));)
+		{
+			
+			String line = br.readLine();
+			while(line!=null)
+			{
+				System.out.println(line);
+				line = br.readLine();
+			}
+				
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+		
+	}
+}
+
+PrintWriter 
+===========
+It is a enhanced writer to write character oriented data into a file.
+
+constructor
+-----------
+	PrintWriter pw = new PrintWriter(File f);
+	PrintWriter pw = new PrintWriter(Writer w);
+
+PrintWriter can communicate with file directly as well as it takes the support of writer object.
+
+The main advantage of PrintWriter over FileWriter and BufferedWriter is we can insert any type of data. Specially when we want to insert primitive datat then we need to use PrintWriter.
+
+Methods
+---------
+1) write(int ch)
+2) write(char[] ch)
+3) write(String s)
+4) flush()
+5) close() 
+
+1) println(int i)
+2) println(char c)
+3) println(double d)
+4) println(boolean b)
+5) println(String s)
+
+1) print(int i)
+2) print(char c)
+3) print(double d)
+4) print(boolean b)
+5) print(String s)
+
+ex:
+---
+import java.io.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		try (PrintWriter pw = new PrintWriter("ccc.txt");)
+		{
+			
+			pw.write(98); // b 
+			pw.println(98); // 98 
+			pw.println('a'); // a 
+			pw.println(true); // true 
+			pw.println(10.56); // 10.56
+			pw.println("Hi"); // Hi 
+			pw.flush();
+			System.out.println("Please check the location");
+				
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+		
+	}
+}
+
+FileInputStream 
+===============
+It is used to read the data from a file in the form of byte of stream.
+
+FileOutputStream 
+================
+It is used to insert the data into a file in the form of byte of stream.
+
+Q) Write a java program to copy the data from one file to another file?
+
+input:
+	source.txt 
+	----------
+	a
+	bb
+	ccc
+	dddd
+
+import java.io.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		try (
+				FileInputStream fis = new FileInputStream("source.txt");
+				FileOutputStream fos = new FileOutputStream("destination.txt");
+				)
+		{
+			
+			int byteReads=0;
+			byte[] arr = new byte[50];
+			
+			while((byteReads=fis.read(arr))!=-1)
+			{
+				fos.write(arr,0,byteReads);
+			}
+			System.out.println("Data Copied!!");	
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+		
+	}
+}
+
+Various ways to take inputs in java
+===================================
+There are four ways to take inputs in java.
+
+1) Command Line Argument 
+
+2) BufferedReader class 
+
+3) Console class
+
+4) Scanner class 
+
+1) Command Line Argument 
+-------------------------
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		String name = args[0];	
+		System.out.println("Welcome :"+name);
+	}
+}
+javac  Test.java
+java   Test DennisRitchie
+
+
+2) BufferedReader class
+------------------------
+import java.io.*;
+class Test 
+{
+	public static void main(String[] args)throws IOException
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Enter the name :");
+		String name = br.readLine();
+		System.out.println("Welcome :"+name);
+	}
+}
+
+3) Console class
+----------------
+import java.io.*;
+class Test 
+{
+	public static void main(String[] args)throws IOException
+	{
+		Console c = System.console();
+		System.out.println("Enter the name :");
+		String name = c.readLine();
+		System.out.println("Welcome :"+name);
+	}
+}
+
+4) Scanner class 
+-----------------
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int no = sc.nextInt();
+		System.out.println("Enter the name  :");
+		String name = sc.next();
+		System.out.println("Enter the fee :");
+		double fee = sc.nextDouble();
+		System.out.println(no+" "+name+" "+fee);
+	}
+}
+
+Serialization 
+=============
+The process of storing object data into a file is called serialization.
+
+Converting object state to file state is called serialization.
+
+To perform serialization we required ObjectOutputStream and FileOutputStream.
+
+We can perform serialization only for serialized objects.
+
+To create serialized object our class must implements Serializable interface.
+
+Serializable is a marker interface which does not have methods and constants.
+
+By using Serializable interface we will get some ability by JVM.
+
+Diagram: class43.1
+
+ex:
+---
+import java.io.*;
+class Person implements Serializable
+{
+	private String name;
+	private int age;
+	
+	public Person(String name,int age)
+	{
+		this.name=name;
+		this.age=age;
+	}
+	@Override
+	public String toString()
+	{
+		return name+" "+age;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Person p = new Person("Alan",32);
+		try(ObjectOutputStream ostream = new ObjectOutputStream(new FileOutputStream("abc.ser"));)
+		{
+			ostream.writeObject(p);
+			System.out.println("Serialization Done");
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+
+Deserialization 
+=============
+The process of taking the data from a file and representing an object is caleld deserialization.
+
+Converting file state to object state is called deserialization.
+
+To perform deserialization we required ObjectInputStream and FileInputStream.
+
+We can perform deserialization only for serialized objects.
+
+To create serialized object our class must implements Serializable interface.
+
+Serializable is a marker interface which does not have methods and constants.
+
+By using Serializable interface we will get some ability by JVM.
+
+Diagram: class43.2
+
+ex:
+--
+import java.io.*;
+class Person implements Serializable
+{
+	private String name;
+	private int age;
+	
+	public Person(String name,int age)
+	{
+		this.name=name;
+		this.age=age;
+	}
+	@Override
+	public String toString()
+	{
+		return name+" "+age;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		try(ObjectInputStream istream = new ObjectInputStream(new FileInputStream("abc.ser"));)
+		{
+			Person p = (Person )istream.readObject();
+			System.out.println(p);
+		}
+		catch (IOException | ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+
+Singleton class
+===============
+Singleton is a design pattern which ensures that a class must have only one instance.
+
+A class which allows to create only one object is called singleton class.
+
+The main purpose of singleton class is to control object creations and save some memory or resources, provides consistency accross the application and global access point.
+
+To create a singleton class we required private constructor and static method.
+
+ex:
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

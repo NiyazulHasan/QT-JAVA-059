@@ -1,0 +1,433 @@
+HashSet 
+=======
+The underlying data structure is Hashtable.
+
+Duplicate objects are not allowed.
+
+Insertion order is not preserved because it takes hashcode of an object.
+
+Hetrogeneous objects are allowed.
+
+Null insertion is possible.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		HashSet hs = new HashSet();
+		hs.add("one");
+		hs.add("nine");
+		hs.add("six");
+		hs.add("four");
+		System.out.println(hs); // [nine, six, four, one]
+		
+		hs.add("one");
+		System.out.println(hs); // [nine, six, four, one]
+		
+		hs.add(10);
+		System.out.println(hs); // [nine, six, four, one, 10]
+		
+		hs.add(null);
+		System.out.println(hs); // [null, nine, six, four, one, 10]
+	}
+}
+
+LinkedHashSet 
+=============
+It is a child class of HashSet class.
+
+LinkedHashSet is exactly same as HashSet class with following differences.
+
+HashSet					LinkedHashSet
+----------				-------------
+The underlying structure is Hashtable.	The underlying data structure is Hashtable 	
+					and LinkedList.
+
+Insertion order is not preserved.	Insertion order is preserved.
+
+It is introduced in 1.2 version.	It is introduced in 1.4 version.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		LinkedHashSet lhs = new LinkedHashSet();
+		lhs.add("one");
+		lhs.add("nine");
+		lhs.add("six");
+		lhs.add("four");
+		System.out.println(lhs); // [one,nine,six,four]
+		
+		lhs.add("one");
+		System.out.println(lhs); // [one,nine,six,four]
+		
+		lhs.add(10);
+		System.out.println(lhs); // [one,nine,six,four,10]
+		
+		lhs.add(null);
+		System.out.println(lhs); // [one,nine,six,four,10,null]
+	}
+}
+
+TreeSet 
+=======
+The underlying data structure is balanced tree.
+
+Duplicate objects are not allowed.
+
+Insertion order is not preserved because it takes sorting order of an object.
+
+Hetrogeneous objects are not allowed otherwise we will get ClassCastException.
+
+Null insertion is not possible otherwise we will get NullPointerException.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		TreeSet ts = new TreeSet();
+		ts.add(5);
+		ts.add(1);
+		ts.add(10);
+		ts.add(7);
+		System.out.println(ts); // [1,5,7,10]
+		
+		ts.add(1);
+		System.out.println(ts); // [1,5,7,10]
+		
+		//ts.add("Hi");
+		//System.out.println(ts); // R.E ClassCastException
+		
+		//ts.add(null);
+		//System.out.println(ts); // R.E NullPointerException
+	}
+}
+
+
+Q) What is difference between Comparable and Comparator interface?
+
+Comparable 
+==========
+It is an interface which is present in java.lang package.
+It contains only one method i.e compareTo() method.
+If we depend upon default natural sorting order then we need to use Comparable interface.
+ex:
+	obj1.compareTo(obj2)
+
+	It returns -ve if obj1 comes before obj2
+	It returns +ve if obj1 comes after obj2
+	It returns 0 if both objects are same 
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("A".compareTo("Z")); // -25	
+		System.out.println("Z".compareTo("A")); // 25	
+		System.out.println("K".compareTo("K")); // 0	
+	}
+}
+
+Comparator
+==========
+It is present in java.util package.
+It contains following two methods i.e compare() and equals().
+If we depend upon customized sorting order then we need to use Comparator interface.
+ex:
+	public int compare(Object obj1,Object obj2)
+	
+	ex:
+		It returns +ve if obj1 comes before obj2
+		It returns -ve if obj1 comes after obj2
+		It returns 0 if both objects are same 
+
+Implementation of compare() method is mandatory.
+
+But implement of equals() method is optional because it is present in Object class which is available to the program through inheritance.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		TreeSet ts = new TreeSet(new MyComparator());
+		ts.add(5);
+		ts.add(1);
+		ts.add(10);
+		ts.add(4);
+		System.out.println(ts); // [10, 5, 4, 1]
+	}
+}
+class MyComparator implements Comparator 
+{
+	public int compare(Object obj1,Object obj2)
+	{
+		Integer i1 = (Integer)obj1;
+		Integer i2 = (Integer)obj2;
+		
+		if(i1<i2)
+			return 1;
+		else if(i1>i2)
+			return -1;
+		else 
+			return 0;
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		TreeSet ts = new TreeSet(new MyComparator());
+		ts.add(5);
+		ts.add(1);
+		ts.add(10);
+		ts.add(4);
+		System.out.println(ts); // [1, 4, 5, 10]
+	}
+}
+class MyComparator implements Comparator 
+{
+	public int compare(Object obj1,Object obj2)
+	{
+		Integer i1 = (Integer)obj1;
+		Integer i2 = (Integer)obj2;
+		
+		if(i1<i2)
+			return -1;
+		else if(i1>i2)
+			return 1;
+		else 
+			return 0;
+	}
+}
+
+
+Q) Write a java program to compare two dates?
+
+import java.time.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		LocalDate date1 = LocalDate.now(); // 2026-04-18
+		LocalDate date2 = LocalDate.of(2025,10,27); 
+		
+		if(date1.compareTo(date2)>0)
+			System.out.println("date1 is greatest");
+		else if(date1.compareTo(date2)<0)
+			System.out.println("date2 is greatest");
+		else
+			System.out.println("Both are same");
+	}
+}
+
+Q) Write a java program to display distinct elements from given array?
+
+input:
+	1 2 2 4 4 4 4 3 3 3 
+
+output:
+	1 2 4 3 
+
+
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {1,2,2,4,4,4,4,3,3,3}; 
+		
+		Set<Integer> set = new LinkedHashSet<>();
+		
+		for(int i : arr)
+		{
+			set.add(i);
+		}
+		
+		for(int i : set)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+Q) Write a java program to find out unique pairs ?
+
+input:
+	5
+	john tom 
+	john ana 
+	john tom 
+	marry ana 
+	marry ana 
+output:
+	1
+	2
+	2
+	3
+	3
+
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt(); // 5 
+		
+		Set<String> set = new LinkedHashSet<>();
+		List<Integer> list = new ArrayList<>();
+		
+		//consume the line 
+		sc.nextLine();
+		
+		for(int i=1;i<=5;i++)
+		{
+			String pair = sc.nextLine().trim();
+			set.add(pair);
+			list.add(set.size());
+		}
+		for(int i : list)
+		{
+			System.out.println(i);
+		}
+	}
+}
+
+Map 
+====
+It is not a child interface of Collection interface.
+
+If we want to represent group of individual objects in key and value pair then we need to use Map interface.
+
+Key can't be duplicate but value can be duplicate.
+
+Key and value both must be objects.
+
+Each key and value pair is known as one-entry.
+
+Diagram: class46.1
+
+Map.of()
+========
+It is introduced in java 9.
+
+It gives implicit object.
+
+It does not allow null for both key and value.
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Map<Integer,String> map = Map.of(
+					1,"one",
+					2,"two",
+					3,"three");
+		System.out.println(map);
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Map<Integer,String> map = Map.of(
+					1,"one",
+					2,"two",
+					3,"three");
+		map.put(6,"six");
+		System.out.println(map);
+	}
+}
+o/p:
+	R.E : UnsupportedOperationException
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Map<Integer,String> map = Map.of(
+					1,"one",
+					2,"two",
+					3,"three",
+					null,null);
+		System.out.println(map);
+	}
+}
+o/p:
+	R.E : NullPointerException
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Map<Integer,String> map = Map.of(1,"one",2,"two",3,"three");
+		
+		for(Map.Entry<Integer,String> entry : map.entrySet())
+		{
+			System.out.println(entry.getKey()+"="+entry.getValue());
+		}
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		Map<Integer,String> map = Map.of(1,"one",2,"two",3,"three");
+		
+		Set set = map.keySet();
+		System.out.println(set);
+		
+		Collection c = map.values();
+		System.out.println(c); 
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

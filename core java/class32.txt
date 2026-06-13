@@ -1,0 +1,362 @@
+Polymorphism 
+============
+Polymorphism has taken from Greek word.
+
+Poly means many and morphism means forms. 
+
+The ability to represent in different forms is called polymorphism.
+
+Diagram: class32.1
+
+The main objective of polymorphism is to provide flexibility.
+
+In java, polymorphism divided into two types.
+
+1) Compile time polymorphism / Static polymorphism / Early Binding 
+
+2) Runtime polymorphism / Dynamic polymorphism / Late Binding 
+
+1) Compile time polymorphism
+----------------------------
+A polymorphism which exhibits at compile time is called compile time polymorphism.
+
+Method resolution will taken care by a compiler based on reference type.
+
+ex:
+	Method Overloading 
+	Method Hiding 
+
+
+2) Runtime polymorphism 
+-----------------------
+A polymorphism which exhibits at runtime is called untime polymorphism.
+
+Method resolution will taken care by a JVM based on runtime object.
+
+ex:
+	Method Overriding 
+
+
+Diagram: class32.2
+
+
+
+
+
+this keyword 
+============
+A this keyword is a java keyword which is used to refer current class object reference.
+
+We can utilize this keyword in following ways.
+
+1) To refer current class variables 
+
+2) To refer current class methods 
+
+3) To refer current class constructors 
+
+
+1) To refer current class variables
+-----------------------------------
+class A 
+{
+	int i=10;
+	int j=20;
+	
+	A(int i,int j)
+	{
+		System.out.println(i+" "+j); // 100  200
+		System.out.println(this.i+" "+this.j);// 10  20
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		A a = new A(100,200);
+	}
+}
+
+2) To refer current class methods 
+----------------------------------
+class A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+		this.m2();
+	}
+	public void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		A a = new A();
+		a.m1();
+	}
+}
+
+3) To refer current class constructors 
+--------------------------------------
+class A 
+{
+	A()
+	{
+		System.out.println("0-arg const");
+	}
+	A(int i)
+	{
+		this();
+		System.out.println("int-arg const");
+	}
+	A(double d)
+	{
+		this(10);
+		System.out.println("double-arg const");
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		A a = new A(10.5d);
+	}
+}
+
+
+super keyword 
+=============
+A super keyword is a java keyword which is used to refer super class object reference.
+
+We can utilize super keyword in following ways.
+
+1) To refer super class variables 
+
+2) To refer super class methods 
+
+3) To refer super class constructors 
+
+
+1) To refer super class variables
+----------------------------------
+class A 
+{
+	int i=1;
+	int j=2;
+}
+class B extends A 
+{
+	int i=10;
+	int j=20;
+	
+	B(int i,int j)
+	{
+		System.out.println(this.i+" "+this.j); // 10  20
+		System.out.println(i+" "+j); // 100 200
+		System.out.println(super.i+" "+super.j); // 1 2
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		B b = new B(100,200);
+	}
+}
+
+2) To refer super class methods
+-------------------------------
+class A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class B extends A 
+{
+	public void m2()
+	{
+		super.m1();
+		System.out.println("M2-Method");
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		B b = new B();
+		b.m2();
+	}
+}
+
+
+3) To refer super class constructors 
+-------------------------------------
+class A 
+{
+	A()
+	{
+		System.out.println("A-const");
+	}
+}
+class B extends A 
+{
+	B()
+	{
+		super();
+		System.out.println("B-const");
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		B b = new B();
+	}
+}
+
+
+
+Sealed class
+=============
+A sealed class introduced in Java 17.
+
+It provides a mechanism to restrict which other classes can't extend or implement a given class or interface. 
+
+sealed modifier: 
+----------------
+The superclass or interface is declared with the sealed keyword.
+
+permits clause:
+---------------
+The declaration must include a permits clause to explicitly list the direct subclasses or subinterfaces that are allowed to extend or implement it.
+
+
+Every permitted subclass must be declared with one of three modifiers to define how the hierarchy continues:
+
+final: 
+------
+The class cannot be extended any further (record classes are implicitly final).
+
+sealed: 
+-------
+The class can be extended further, but only by its own specific permitted subclasses.
+
+non-sealed: 
+-----------
+The class breaks the sealing hierarchy and can be extended by any unknown class (reverts to traditional open inheritance). 
+
+ex:1
+----
+sealed class A  permits B 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+final class B extends A 
+{
+	public void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a = new A();
+		a.m1();
+		
+		B b = new B();
+		b.m1();
+		b.m2();
+	}
+}
+
+ex:2
+----
+sealed class A  permits B 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+non-sealed class B extends A 
+{
+	public void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a = new A();
+		a.m1();
+		
+		B b = new B();
+		b.m1();
+		b.m2();
+	}
+}
+
+ex:3
+---
+sealed class A  permits B 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+sealed class B extends A 
+{
+	public void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+final class C extends B 
+{
+	public void m3()
+	{
+		System.out.println("M3-Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		A a = new A();
+		a.m1();
+		
+		B b = new B();
+		b.m1();
+		b.m2();
+		
+		C c = new C();
+		c.m1();
+		c.m2();
+		c.m3();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+

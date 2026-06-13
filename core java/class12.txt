@@ -1,0 +1,213 @@
+System.out.println()
+====================
+It is a output statement in java.
+
+Whenever we want to display any userdefined statements or data then we need to use output stmt.
+
+syntax:
+-------
+	static variable 
+		|
+	System.out.println(); 
+	|		|
+	predefined 	predefined method 
+	final class 
+
+Diagram: class12.1
+
+
+
+ex:
+---
+class Test 
+{
+	void main()
+	{
+		System.out.print("Quality");
+		System.out.print("Thought");
+	}
+}
+
+ex:
+---
+class Test 
+{
+	void main()
+	{
+		System.out.println("Quality");
+		System.out.println("Thought");
+	}
+}
+
+ex:
+---
+class Test 
+{
+	void main()
+	{
+		double d = 15.1234567d;
+		System.out.printf("%.2f",d);		
+	}
+}
+
+Q) What is the difference between System.out.println() and System.err.println()?
+
+System.out.println()
+--------------------
+It is used to display standard output.
+It is used to display the output only on console.
+
+System.err.println()
+--------------------
+It is used to display error output.
+It is used to display the output on console as well as it redirects to physical file.
+ex:
+	class Test 
+	{
+		void main()
+		{
+			System.err.println("Error Output");		
+		}
+	}
+	javac  Test.java
+	java   Test 2>demo.txt
+
+
+Various ways to print the data in java
+---------------------------------------
+1) custom message 
+   ex:
+	System.out.println("Hello world");
+
+
+2) int a=10;
+   ex:
+	System.out.println(a); 
+	System.out.println("The value is ="+a);	
+	System.out.println(a+" is the value");
+
+
+3) int a=10,b=20;
+   ex:
+	System.out.println(a+" "+b);
+	System.out.println(a+" and "+b);
+
+
+4) int i=1,j=2,k=3;
+   ex:
+	System.out.println(i+" "+j+" "+k);
+
+
+Fully Qualified Name 
+====================
+Fully qualified name means we will declare a class or interface along with package name.
+
+It improves readability of our code.
+ex:
+	java.io.File (C)
+	java.util.Enumeration (I) 
+
+ex:
+---
+class Test 
+{
+	void main()
+	{
+		java.util.Date d = new java.util.Date();
+		System.out.println(d); 		
+	}
+}
+
+In realtime we will use fully qualified name when we are using a class or interface which is present in two different packages and we required both the classes or interface in our program.
+ex:
+	java.util.Date 
+	java.sql.Date 	
+
+
+Import statements 
+=================
+Whenever we use import statement we should not use fully qualified name.
+
+Using short name also we can achieve.
+
+In java, we have three import statements.
+
+1) Explicit class import 
+
+2) Implicit class import 
+
+3) Static import 
+
+1) Explicit class import
+-------------------------
+This type of import statement is highly recommanded to use because it increase readability of our code.
+
+ex:
+---
+import java.time.LocalDate;
+import java.time.LocalTime;
+class Test 
+{
+	void main()
+	{
+		LocalDate d = LocalDate.now();
+		System.out.println(d); 
+
+		LocalTime t = LocalTime.now();
+		System.out.println(t); 
+	}
+}
+
+2) Implicit class import 
+-------------------------
+This type of import statement is not recommanded to use because it will reduce readability of our code.
+
+ex:
+---
+import java.time.*;
+class Test 
+{
+	void main()
+	{
+		LocalDate d = LocalDate.now();
+		System.out.println(d); 
+
+		LocalTime t = LocalTime.now();
+		System.out.println(t); 
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

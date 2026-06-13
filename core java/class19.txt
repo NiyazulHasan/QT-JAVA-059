@@ -1,0 +1,451 @@
+
+Q) Write a java program to find out given number is even or odd?
+
+Input:
+	2
+output:
+	It is a even number 
+
+ex:
+---
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();
+		
+		if(n%2==0)
+			System.out.println("It is even number");
+		else
+			System.out.println("It is odd number");
+	}
+}
+
+
+Q) Write a java program to find out given number is odd or not?
+
+Input:
+	6
+Output:
+	It is not a odd number 
+
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();
+		
+		if(n%2!=0)
+			System.out.println("It is odd number");
+		else
+			System.out.println("It is not odd number");
+	}
+}
+
+Q) John wants to buy new shoes. He visited to a big showroom to buy pair of shoes. But he has a myth that if shoe price divisible by 3 and divisible by 5 then only john can buy the shoe. Write a java program to display john can buy the show or not?
+
+input:
+	shoe price : 1500
+output:
+	John can buy the shoe
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter Shoe Price :");
+		int price = sc.nextInt(); 
+		
+		if((price%3==0) && (price%5==0))
+			System.out.println("John can buy the shoe");
+		else
+			System.out.println("John can't buy the shoe");
+	}
+}
+
+
+Q) Write a java program to find out given year is a leap year or not?
+
+input:
+	2024
+output:
+	It is a leap year 
+
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the year :");
+		int year = sc.nextInt();
+		
+		if(year%4==0 && year%100!=0 || year%400==0)
+			System.out.println("It is a leap year");
+		else
+			System.out.println("It is not a leap year");
+	}
+}
+
+
+Q) Write a java program to find out given alphabet is a vowel or not?
+
+input:
+	a 
+output:
+	It is a vowel 
+
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the alphabet :");
+		char ch = sc.next().charAt(0);	
+		
+		if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u')
+			System.out.println("It is a vowel");
+		else
+			System.out.println("It is not a vowel");
+	}
+}
+
+iii) if else if ladder 
+======================
+It is used to execute the source code based on multiple conditions.
+
+syntax:
+-------
+	if(cond1)
+	{
+		- // code to be execute if cond1 is true 	
+	}
+	else if(cond2)
+	{
+		- // code to be execute if cond2 is true 
+	}
+	else if(cond3)
+	{
+		- // code to be execute if cond3 is true 
+	}
+	else
+	{
+		- // code to be execute if all conditions are false 
+	}
+
+
+ex:
+---
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the option :");
+		int option = sc.nextInt(); // 108 
+		
+		if(option == 100)
+			System.out.println("It is a police number");
+		else if(option == 103)
+			System.out.println("It is a enquiry number");
+		else if(option==108)
+			System.out.println("It is a emergency number");
+		else
+			System.out.println("Invalid option");
+	}
+}
+
+Q) Write a java program to find out given alphabet is a uppercase letter, lowercase letter, digit or a special symbol?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the alphabet ");
+		char ch = sc.next().charAt(0);
+		
+		if(Character.isUpperCase(ch))
+			System.out.println("It is uppercase letter");
+		else if(Character.isLowerCase(ch))
+			System.out.println("It is lowercase letter");
+		else if(Character.isDigit(ch))
+			System.out.println("It is Digit");
+		else
+			System.out.println("It is special symbol");
+	}
+}
+
+
+Q) Write a java program to find out given alphabet is a vowel or consonent?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the alphabet ");
+		char ch = sc.next().charAt(0);
+		
+		ch = Character.toLowerCase(ch);
+		
+		if(ch=='a')
+			System.out.println("It is a vowel");
+		else if(ch=='e')
+			System.out.println("It is a vowel");
+		else if(ch=='i')
+			System.out.println("It is a vowel");
+		else if(ch=='o')
+			System.out.println("It is a vowel");
+		else if(ch=='u')
+			System.out.println("It is a vowel");
+		else
+			System.out.println("It is a consonent");
+	}
+}
+
+Q) Write a java program to accept six marks of a students then find out total, average and grade?
+
+i) If average is greater than equals to 70 then A grade.
+
+ii) If average is greater than equals to 50 then B grade.
+
+iii) If average is greater than equals to 35 then C grade.
+
+iv) If average is less then 35 then failed.
+
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the six marks of a student :");
+		int m1 = sc.nextInt();
+		int m2 = sc.nextInt();
+		int m3 = sc.nextInt();
+		int m4 = sc.nextInt();
+		int m5 = sc.nextInt();
+		int m6 = sc.nextInt();
+		
+		int total = m1+m2+m3+m4+m5+m6;
+		float average = (float)total/6;
+		
+		System.out.println("Total :"+total);
+		System.out.println("Average :"+average);
+		
+		if(average>=70)
+			System.out.println("Grade : A grade");
+		else if(average>=50)
+			System.out.println("Grade : B grade");
+		else if(average>=35)
+			System.out.println("Grade : C grade");
+		else 
+			System.out.println("Grade : Failed");
+		
+	}
+}
+
+iv) nested if stmt 
+===================
+If stmt contains another if stmt is called nested if stmt.
+
+syntax:
+------
+	if(condition)
+	{
+		if(condition)
+		{
+			-
+			- //code to be execute 
+			-
+		}
+	}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		if(5>2)
+		{
+			System.out.println("stmt2");
+			
+			if(true)
+			{
+				System.out.println("stmt3");
+			}
+			
+			System.out.println("stmt4");
+		}
+		
+		System.out.println("stmt5");
+	}
+}
+o/p:
+	stmt1
+	stmt2
+	stmt3
+	stmt4
+	stmt5
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		if(5>20)
+		{
+			System.out.println("stmt2");
+			
+			if(true)
+			{
+				System.out.println("stmt3");
+			}
+			
+			System.out.println("stmt4");
+		}
+		
+		System.out.println("stmt5");
+	}
+}
+o/p:
+	stmt1
+	stmt5
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		if(5>2)
+		{
+			System.out.println("stmt2");
+			
+			if(!true)
+			{
+				System.out.println("stmt3");
+			}
+			
+			System.out.println("stmt4");
+		}
+		
+		System.out.println("stmt5");
+	}
+}
+
+Q) Write a java program to find out given number is positive or negative using nested if stmt?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();  // -5
+		
+		if(n!=0)
+		{
+			if(n>0)
+			{
+				System.out.println("It is a positive number");
+				System.exit(0);
+			}
+			System.out.println("It is a negative number");
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q) Write a java program to find out the cost based on user inputs. A program must prompt users to enter total weight of items (in kilograms) and shipping destination (domestic or international). For domestic orders, a program must charge Rs.500 upto 5kg and Rs.100 per additional kg.For international orders a program must charge  Rs.1000 upto 5kg and Rs.200 per additional kg, and Rs.500 surcharge if weight exceeded to 10 kg.Find out or calculated shipping cost.
+

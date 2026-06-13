@@ -1,0 +1,196 @@
+var-arg method 
+==============
+A var-arg method introduced in Java 1.5.
+
+Untill 1.4 version it is not possible to declare a method with variable number of arguments but from 1.5 version onwards it is possible to declare a method with variable number of arguments.
+
+We can declare var-arg method as follow.
+ex:
+			  var-arg parameter
+			   |
+		       --------	
+	void methodOne(int... i)
+			   |
+			ellipse 
+
+A var-arg parameter is a replacement of single dimensional array.
+ex:
+	... ------------> [] 
+
+We can invoke var-arg method with any number of int values including zero.
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		methodOne();
+	}
+	public static void methodOne()
+	{
+		System.out.println("0-arg method");
+	}
+}
+
+ex:
+----
+class Test
+{
+	public static void main(String[] args)
+	{
+		methodOne(10);
+	}
+	public static void methodOne(int i)
+	{
+		System.out.println("one-arg method");
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		methodOne(10,20);
+	}
+	public static void methodOne(int i,int j)
+	{
+		System.out.println("two-arg method");
+	}
+}
+
+ex:
+---
+class Test
+{
+	public static void main(String[] args)
+	{
+		methodOne();
+		methodOne(10);
+		methodOne(10,20);
+		methodOne(10,20,30);
+	}
+	public static void methodOne(int... i)
+	{
+		System.out.println("var-arg method");
+	}
+}
+
+In real life we will use var-arg method when number of inputs are not fixed to a method.
+
+ex:
+---
+class Restaurant
+{
+	public static void main(String[] args)
+	{
+		//makeOrders("Biryani");
+		makeOrders("Burger","Pizza");
+	}
+	public static void makeOrders(String... orders)
+	{
+		//System.out.println(orders[0]);
+		System.out.println(orders[0]+" "+orders[1]);
+	}
+}
+
+case1:
+------
+	We can mix var-arg parameter with general parameters.
+	ex:
+		void methodOne(int x,int... y)
+
+case2:
+------
+	If we mix var-arg parameter with general parameters then var-arg parameter
+	must be last parameter.	
+	ex:
+		void methodOne(int x,int... y)  //valid 
+		void methodOne(int... x,int y)  // invalid 
+
+case3:
+-----
+	A var-arg method can have only one var-arg parameter.
+	ex:
+		void methodOne(int... x)  //valid 
+		void methodOne(int... x,int... y) //invalid 
+		
+
+Java Source File Structure 
+==========================
+case1:
+------
+	A java program can have multiple classes.
+
+case2:
+------
+	If a java program contains multiple classes then we need to check 
+	which class contains main method and that class treated as main class.
+	ex:
+		Student.java
+		------------
+		class Recordings
+		{
+			String source="LMS";
+		}
+		class Student
+		{
+			public static void main(String[] args)
+			{
+				Recordings r = new Recordings();
+				System.out.println(r.source);
+			}
+		}			
+		If we compile above program we will get two .class files i.e 
+		Recordings.class and Student.class.
+case3:
+-----
+	If a java program contains multiple classes with main method then we need to 
+	declare any one class as public and that public class treated as main class.
+	ex:
+		A.java
+		-------
+		public class A 
+		{
+			public static void main(String[] args)
+			{
+				System.out.println("A-class");
+			}
+		}
+		class B
+		{
+			public static void main(String[] args)
+			{
+				System.out.println("B-class");
+			}
+		}
+		class C
+		{
+			public static void main(String[] args)
+			{
+				System.out.println("C-class");
+			}
+		}
+
+		If we compile above program we will get three .class files i.e 
+		A.class, B.class and C.class.
+		ex:
+			javac  A.java
+
+		But we need to execute each class seperately.
+		ex:
+			java  A 
+			java  B 
+			java  C 
+
+
+
+
+
+
+
+
+
+

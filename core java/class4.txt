@@ -1,0 +1,126 @@
+Java 
+=====
+
+Version		:	JDK 25
+
+Vendor		:	Oracle Corporation 
+
+Creator		:	James Gosling 
+
+Website		:	www.oracle.com/java
+
+Open source	:	Open source
+
+Download link	:	
+
+https://www.oracle.com/java/technologies/downloads/#jdk25-windows
+
+
+Steps to setup environmental variables
+======================================
+step1:
+------
+	Make sure JDK 25 installed successfully.
+
+step2:
+------
+	Copy "bin" directory from "JAVA_HOME" folder.
+	ex:
+		C:\Program Files\Java\jdk-25\bin
+step3:
+------
+	Paste "bin" directory in environment variables.
+	ex:
+		Right click to This PC --> properties --> Advanced system settings
+		---> Environment variables --> system variables --> click to 
+		new button -->  
+		variable name : path 
+		variable value : C:\Program Files\Java\jdk-25\bin;
+		---> ok ---> ok  ---> ok. 
+
+step4:
+------
+	Check environment variables setting done perfectly or not.
+	ex:
+		 cmd> javap
+		 cmd> java  -version 
+
+
+Steps to develop first java application 
+=======================================
+step1:
+------
+	Make sure JDK 25 installed successfully.
+
+step2:
+------
+	Make sure environmental variables done perfectly.
+
+step3:
+------
+	Create a "javaprog" folder inside 'D' drive.
+
+step4:
+-----
+	Open the notepad and type Hello World program.
+	ex:
+		Traditional Approach
+		---------------------
+		class Test
+		{
+			public static void main(String[] args)
+			{
+				System.out.println("Hello World");
+			}
+		}
+		Latest Approach
+		----------------
+		void main()
+		{
+			System.out.println("Batch 59");
+		}
+
+
+step5:
+------
+	Save above program with same name as class name inside "javaprog" folder.
+
+step6:
+-------
+	Open the command prompt from "javaprog" location.
+	
+step7:
+------
+	Compile the program by using below command.
+	ex:
+		javac    Test.java
+				|
+				filename 
+
+step8:
+------
+	Run above program by using below command.
+	ex:
+		java     Test 
+			  |
+			classname 
+
+Note:
+-----
+Since Java 11, we can execute java program directly by using below command.
+ex:
+	java    Test.java
+			|
+			filename
+
+
+
+
+
+
+
+
+
+
+
+
